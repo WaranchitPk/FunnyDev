@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import {  Link } from "react-router-dom";
-import { AppBar, Toolbar, Typography, Button } from "@material-ui/core";
+import { Link } from "react-router-dom";
+import { AppBar, Toolbar, Typography, Button, Grid, Tabs, Tab } from "@material-ui/core";
 
 const styles = {
   AppBar: {
@@ -16,6 +16,13 @@ const styles = {
 };
 
 class Header extends Component {
+  state = {
+    value: 0
+  };
+  handleChange = (event, value) => {
+    this.setState({ value });
+  };
+
   render() {
     return (
       <div style={styles.root}>
@@ -24,26 +31,17 @@ class Header extends Component {
             <Typography variant="title" style={styles.subheading}>
               Title
             </Typography>
-            <Typography variant="subheading">
-              <Button component={Link} to={"/"}>
-                Home
-              </Button>
-            </Typography>
-            <Typography variant="subheading">
-              <Button component={Link} to={"/course_analytic"}>
-                Course Analytic
-              </Button>
-            </Typography>
-            <Typography variant="subheading">
-              <Button component={Link} to={"/user_analytic"}>
-                User Analytic
-              </Button>
-            </Typography>
-            <Typography variant="subheading">
-              <Button component={Link} to={"/orther_stat"}>
-                Orther
-              </Button>
-            </Typography>
+            <Tabs
+              value={this.state.value}
+              onChange={this.handleChange}
+              scrollable
+              scrollButtons="auto"
+            >
+              <Tab label="Home" component={Link} to={"/"}/>
+              <Tab label="Course Analytic" component={Link} to={"/course_analytic"}/>
+              <Tab label="User Analytic" component={Link} to={"/user_analytic"}/>
+              <Tab label="Orther" component={Link} to={"/orther_stat"}/>
+            </Tabs>
           </Toolbar>
         </AppBar>
       </div>
