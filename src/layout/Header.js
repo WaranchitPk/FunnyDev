@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { AppBar, Toolbar, Typography, Button, Grid, Tabs, Tab } from "@material-ui/core";
+import { AppBar, Toolbar, Typography, Tabs, Tab } from "@material-ui/core";
+import SwipeableViews from 'react-swipeable-views';
 
 const styles = {
   AppBar: {
     backgroundColor: "#F8B117"
-
   },
   root: {
     flexGrow: 1
@@ -22,7 +22,9 @@ class Header extends Component {
   handleChange = (event, value) => {
     this.setState({ value });
   };
-
+  handleChangeIndex = index => {
+    this.setState({ value: index });
+  };
   render() {
     return (
       <div style={styles.root}>
@@ -35,7 +37,8 @@ class Header extends Component {
               value={this.state.value}
               onChange={this.handleChange}
               scrollable
-              scrollButtons="auto"
+              scrollButtons="off"
+              fullWidth
             >
               <Tab label="Home" component={Link} to={"/"}/>
               <Tab label="Course Analytic" component={Link} to={"/course_analytic"}/>
@@ -44,6 +47,9 @@ class Header extends Component {
             </Tabs>
           </Toolbar>
         </AppBar>
+        {/*<SwipeableViews*/}
+          {/*index={this.state.value}*/}
+          {/*onChangeIndex={this.handleChangeIndex}/>*/}
       </div>
     );
   }
