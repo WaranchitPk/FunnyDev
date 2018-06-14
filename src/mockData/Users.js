@@ -23,3 +23,66 @@ export const y2017 = {
     { name: "Student", value: 1300 }
   ]
 };
+
+export const month = [
+  {
+    id: 1,
+    no: 1,
+    name: "January"
+  },
+  {
+    id: 2,
+    no: 2,
+    name: "February"
+  },
+  {
+    id: 3,
+    no: 3,
+    name: "March"
+  },
+  {
+    id: 4,
+    no: 4,
+    name: "April"
+  },
+  {
+    id: 5,
+    no: 5,
+    name: "May"
+  },
+  {
+    id: 6,
+    no: 6,
+    name: "June"
+  },
+  {
+    id: 7,
+    no: 7,
+    name: "July"
+  },
+  {
+    id: 8,
+    no: 8,
+    name: "August"
+  },
+  {
+    id: 9,
+    no: 9,
+    name: "September"
+  },
+  {
+    id: 10,
+    no: 10,
+    name: "October"
+  },
+  {
+    id: 11,
+    no: 11,
+    name: "November"
+  },
+  {
+    id: 12,
+    no: 12,
+    name: "December"
+  }
+];

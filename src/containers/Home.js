@@ -1,15 +1,27 @@
 import React, { Component } from "react";
-import {HomeComponent} from '../components';
+import { HomeComponent } from "../components";
+import { connect } from "react-redux";
+import { DashBoardAction } from "../actions";
 
 class Home extends Component {
+
+  componentDidMount() {
+    this.props.dispatch(DashBoardAction());
+  }
+
   render() {
+    const { DashBData } = this.props;
     return (
       <div>
-        <HomeComponent />
+        <HomeComponent data={DashBData}/>
       </div>
     );
   }
 }
+const mapStateToProps = (state) =>{
+  return {
+    DashBData: state.DashBoardReducer
+  }
+};
 
-
-export default Home;
+export default connect(mapStateToProps)(Home);

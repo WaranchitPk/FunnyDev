@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Button, Grid } from "@material-ui/core";
-import { Header ,Footer} from "../layout";
+import { Grid } from "@material-ui/core";
+import { Header } from "../layout";
 import { Route ,Switch} from "react-router-dom";
 import { HomeContainers,CourseContainer,UserContainer,OrtherStatContainer} from "../containers";
 

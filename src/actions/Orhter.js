@@ -1,4 +1,4 @@
-import { chiangmaiType, pitsanulokType } from "./types";
+import { chiangmaiType } from "./types";
 import { chiangmaiData_Top10,chiangmaiData_Top50,chiangmaiData_Top100, pitsanulok_Top10,pitsanulok_Top50,pitsanulok_Top100 } from "../mockData/Orther";
 
 export const chiangmai = (type, rating) => {

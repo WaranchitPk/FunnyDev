@@ -1,11 +1,11 @@
 export const data = [
-  { name: "Fa1", uv: 4000, amt: 2400 },
-  { name: "Fa2", uv: 3000, amt: 2210 },
-  { name: "Fa3", uv: 2000, amt: 2290 },
-  { name: "Fa4", uv: 2780, amt: 2000 },
-  { name: "Fa5", uv: 1890, amt: 2181 },
-  { name: "Fa6", uv: 2390, amt: 2500 },
-  { name: "Fa7", uv: 3490, amt: 2100 }
+  { name: "C1", uv: 4000, amt: 2400 },
+  { name: "C2", uv: 3000, amt: 2210 },
+  { name: "C3", uv: 2000, amt: 2290 },
+  { name: "C4", uv: 2780, amt: 2000 },
+  { name: "C5", uv: 1890, amt: 2181 },
+  { name: "C6", uv: 2390, amt: 2500 },
+  { name: "C7", uv: 3490, amt: 2100 }
 ];
 
 
