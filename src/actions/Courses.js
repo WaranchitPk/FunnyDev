@@ -1,16 +1,7 @@
-import { data, faculty } from "../mockData/Courses";
-import { mainCourse, facultyStat, dashboardCourseCampus } from "./types";
+import {dashboardCourseCampus,facultyCourseCampus} from "./types";
 import axios from "axios";
 import { api } from "../config";
 
-export const MainCourse = () => {
-  return dispatch => {
-    dispatch({
-      type: mainCourse,
-      payload: data
-    });
-  };
-};
 export const dashBoardCoursesCampus = () => {
   return dispatch => {
     return axios.get(`${api}/courses`)
@@ -22,12 +13,15 @@ export const dashBoardCoursesCampus = () => {
       });
   };
 };
-
-export const StatFaculty = () => {
-  return dispatch => {
-    dispatch({
-      type: facultyStat,
-      payload: faculty
-    });
-  };
+export const facultyCourse = () =>{
+  return dispatch =>{
+    return axios.get(`${api}/courses/faculty`)
+      .then((result) =>{
+        dispatch({
+          type: facultyCourseCampus,
+          payload: result
+        })
+      })
+  }
 };
+

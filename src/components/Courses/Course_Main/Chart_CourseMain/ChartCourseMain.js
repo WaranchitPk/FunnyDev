@@ -1,7 +1,7 @@
 import React from "react";
 import { ResponsiveContainer, BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Bar } from "recharts";
 
-const ChartCourseMain = ({ data, dataT }) => (
+const ChartCourseMain = ({ dataT }) => (
   <div>
     {/*dataT && console.log("Data", dataT.data.resultData)*/}
     {
