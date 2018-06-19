@@ -56,6 +56,7 @@ export const pitsanulok_Top10 = () => {
   for (let i = 1; i <= 10; i++) {
     const data = {
       id: i,
+      no: i,
       name: `TP${i}`,
       course: `C${i}`,
       volume: `V${i}`
@@ -72,6 +73,7 @@ export const pitsanulok_Top50 = () => {
   for (let i = 1; i <= 50; i++) {
     const data = {
       id: i,
+      no: i,
       name: `TP${i}`,
       course: `C${i}`,
       volume: `V${i}`

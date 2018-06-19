@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import { MainCourses,Faculty} from "./Courses";
+import { MainCourses,Faculty,DashBoardCoursesReducers} from "./Courses";
 import {ChiangmaiCorse} from './Orther';
 import {Y2018Reducer} from './Users';
 import {DashBoardReducer} from './Home';
@@ -8,7 +8,8 @@ const reducers = combineReducers({
   Faculty,
   ChiangmaiCorse,
   Y2018Reducer,
-  DashBoardReducer
+  DashBoardReducer,
+  DashBoardCoursesReducers
 });
 
 export default reducers;

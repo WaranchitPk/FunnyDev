@@ -7,6 +7,7 @@ import { png,jpeg} from "../lib/export";
 import {CourseComponent} from '../components';
 import { mainCourses } from "../selectors/courses";
 import { MainCourse, StatFaculty } from "../actions";
+import {dashBoardCoursesCampus} from '../actions'
 
 class Course extends Component {
     state = {
@@ -16,6 +17,7 @@ class Course extends Component {
   componentDidMount() {
     this.props.dispatch(MainCourse());
     this.props.dispatch(StatFaculty());
+    this.props.dispatch(dashBoardCoursesCampus())
   }
     handleClick = event => {
     this.setState({ anchorEl: event.currentTarget });
@@ -34,6 +36,7 @@ class Course extends Component {
     jpeg(chartSVG,domtoimage)
   };
   render() {
+    console.log(this.props.Campus.dataT);
     return (
       <div>
         <CourseComponent
@@ -51,7 +54,8 @@ class Course extends Component {
 const mapStateToProps = (state) =>{
   return {
     stat: mainCourses(state),
-    fStat: state.Faculty
+    fStat: state.Faculty,
+    Campus: state.DashBoardCoursesReducers
   };
 };
 

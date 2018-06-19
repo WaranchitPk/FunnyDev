@@ -6,10 +6,12 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { createStore,applyMiddleware} from "redux";
 import { Provider } from "react-redux";
 import thunk from 'redux-thunk';
+import promiseMiddleware from 'redux-promise-middleware';
+
 import reducer from "./reducers/rootReducers";
 
 const store = createStore(reducer,
-  applyMiddleware(thunk));
+  applyMiddleware(thunk,promiseMiddleware()));
 
 const renderRootContainer = Root => {
   ReactDom.render(

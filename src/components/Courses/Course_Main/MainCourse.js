@@ -1,7 +1,7 @@
 import React from "react";
 import {Grid,Paper} from '@material-ui/core';
 import {TitleMain,ChartMain,BtExport} from '../';
-const MainCourse = ({data,btState,Open,Close,stylesDash}) => (
+const MainCourse = ({data,btState,Open,Close,stylesDash,dataT}) => (
   <Grid container style={stylesDash}>
     <Grid item sm={12} xs={12}>
       <Paper elevation={5}>
@@ -10,7 +10,9 @@ const MainCourse = ({data,btState,Open,Close,stylesDash}) => (
           Open={Open}
           Close={Close}
           btState={btState}/>
-        <ChartMain data={data}/>
+        <ChartMain
+          data={data}
+          dataT={dataT}/>
       </Paper>
     </Grid>
   </Grid>

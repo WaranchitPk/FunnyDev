@@ -11,17 +11,17 @@ const styles = {
   }
 };
 
-const Course = ({ stat: { data }, fStat: { Fa1, Fa2, Fa3, Fa4 }, cate, anchorEl, OpenPopup, ClosePopup, ExToPng, ExToJpg }) => (
+const Course = ({ stat: { data }, fStat: { Fa1, Fa2, Fa3, Fa4 }, cate, anchorEl, OpenPopup, ClosePopup, ExToPng, ExToJpg,Campus: {dataT}}) => (
   <div>
     <CourseBanner/>
     {/*Main Course All Campus*/}
     <MainCourse
+      dataT={dataT}
       data={data}
       btState={anchorEl}
       Open={OpenPopup}
       Close={ClosePopup}
       stylesDash={styles.dashboardAllCampus}/>
-
     {/*Course Each Campus*/}
     <Grid
       container

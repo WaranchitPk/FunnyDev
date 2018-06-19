@@ -1,4 +1,4 @@
-import { mainCourse,facultyStat} from "../actions/types";
+import { mainCourse,facultyStat,dashboardCourseCampus} from "../actions/types";
 
 export function MainCourses(state = {}, action) {
   switch (action.type) {
@@ -12,7 +12,17 @@ export function MainCourses(state = {}, action) {
     }
   }
 }
-
+export const DashBoardCoursesReducers = (state={},action)=>{
+  switch (action.type){
+    case dashboardCourseCampus:
+      return {
+        ...state,
+        dataT: action.payload
+      };
+    default:
+      return state;
+  }
+};
 export function Faculty(state={},action) {
   switch (action.type){
     case facultyStat:

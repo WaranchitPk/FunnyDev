@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import { HomeComponent } from "../components";
 import { connect } from "react-redux";
 import { DashBoardAction } from "../actions";
-
 class Home extends Component {
 
   componentDidMount() {
     this.props.dispatch(DashBoardAction());
+    // NameCampus();
   }
 
   render() {
