@@ -6,7 +6,7 @@ const SelectMenu = ({type,onSelect,rating}) => (
     value={type}
     onChange={onSelect}
     inputProps={{ name: "type" }}>
-    <MenuItem value={1}>Chiangmai</MenuItem>
+    <MenuItem value={6}>Chiangmai</MenuItem>
     <MenuItem value={2}>Pitsanulok</MenuItem>
   </Select>
     Rating : <Select

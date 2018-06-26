@@ -1,20 +1,30 @@
 import React, { Component } from "react";
 import {OrtherStatComponent} from '../components';
 import { connect } from "react-redux";
-import { chiangmai } from "../actions/Orhter";
+import { chiangmai,find} from "../actions/Orhter";
 
 class OrtherStat extends Component {
   state = {
-    type: 1,
+    type: 6,
     rating: 10,
     rowsPerPage: 5,
     page: 0
   };
   componentDidMount() {
-    this.props.dispatch(chiangmai(this.state.type, this.state.rating));
+    // this.props.dispatch(chiangmai(this.state.type, this.state.rating));
+    const data = {
+      limit: this.state.rating,
+      campus: this.state.type
+    };
+    this.props.dispatch(find(data));
   }
   ChangeCampus = () => {
     // console.log(this.state.type,this.state.rating)
+    const data = {
+      limit: this.state.rating,
+      campus: this.state.type
+    };
+    this.props.dispatch(find(data));
     this.props.dispatch(chiangmai(this.state.type, this.state.rating));
   };
   handleSelect = event => {
@@ -36,6 +46,7 @@ class OrtherStat extends Component {
           onSubmit={this.ChangeCampus}
           onChangePage={this.handleChangePage}
           onChangeRow={this.handleChangeRowsPerPage}
+          data={this.props.resultFind}
           dataCourse={dataCourse}/>
       </div>
     );
@@ -44,7 +55,8 @@ class OrtherStat extends Component {
 
 const mapStateToProps = (state) =>{
   return {
-    cmData: state.ChiangmaiCorse
+    cmData: state.ChiangmaiCorse,
+    resultFind: state.FindRatingCourse
   };
 };
 

@@ -13,7 +13,7 @@ const styles = {
   }
 };
 
-const Orther = ({ onSelect, rating, onSubmit, dataCourse, rowsPerPage, page, type, onChangePage, onChangeRow }) => (
+const Orther = ({ onSelect, rating, onSubmit, dataCourse, rowsPerPage, page, type, onChangePage, onChangeRow,data}) => (
   <div>
     <OrtherBanner/>
     {/*Select Most Course*/}
@@ -32,6 +32,7 @@ const Orther = ({ onSelect, rating, onSubmit, dataCourse, rowsPerPage, page, typ
       <Grid item sm={12} xs={12}>
         <ShowData
           dataCourse={dataCourse}
+          data={data}
           page={page}
           rowsPerPage={rowsPerPage}
           onChangePage={onChangePage}
