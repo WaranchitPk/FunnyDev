@@ -4,6 +4,9 @@
 #
 version: 2
 jobs:
+  machine:
+    node:
+      version: 8.11.3
   build:
     docker:
       # specify the version you desire here
