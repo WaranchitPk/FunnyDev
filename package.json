@@ -15,6 +15,9 @@
       "prettier --write"
     ]
   },
+  "engines": {
+    "node": ">=0.8"
+  },
   "jest": {
     "setupTestFrameworkScriptFile": "./test/enzyme.setup.js"
   },
