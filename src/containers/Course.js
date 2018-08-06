@@ -1,29 +1,34 @@
-import React, { Component } from "react";
-import ReactDOM from "react-dom";
-import domtoimage from "dom-to-image";
-import { connect } from "react-redux";
-import {AppBar,Tabs,Tab} from '@material-ui/core';
-import { png, jpeg } from "../lib/export";
-import { CourseComponent } from "../components";
-import { mainCourses } from "../selectors/courses";
-import { dashBoardCoursesCampus, facultyCourse } from "../actions";
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import domtoimage from 'dom-to-image';
+import { connect } from 'react-redux';
+
+import {
+  png,
+  jpeg,
+} from '../lib/export';
+import { CourseComponent } from '../components';
+import {
+  dashBoardCoursesCampus,
+  facultyCourse,
+} from '../actions';
 
 class Course extends Component {
   state = {
-    cate: "Chiangmai",
+    cate: 'Chiangmai',
     anchorEl: null,
-    valueTabs: 0
+    valueTabs: 0,
   };
 
   componentDidMount() {
-
     this.props.dispatch(dashBoardCoursesCampus());
     this.props.dispatch(facultyCourse());
   }
 
-  handleClick = event => {
+  handleClick = (event) => {
     this.setState({ anchorEl: event.currentTarget });
   };
+
   handleClose = () => {
     this.setState({ anchorEl: null });
   };
@@ -38,13 +43,13 @@ class Course extends Component {
     let chartSVG = ReactDOM.findDOMNode(this.currentChart);
     png(chartSVG, domtoimage);
     this.setState({ anchorEl: null });
-  };
+  }
 
   SaveJpeg() {
     this.setState({ anchorEl: null });
-    let chartSVG = ReactDOM.findDOMNode(this.currentChart);
+    const chartSVG = ReactDOM.findDOMNode(this.currentChart);
     jpeg(chartSVG, domtoimage);
-  };
+  }
 
   render() {
     return (
@@ -60,12 +65,12 @@ class Course extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
+const mapStateToProps = state => (
+  {
     Campus: state.DashBoardCoursesReducers,
-    Faculty: state.FacuntyCoursesReducers
-  };
-};
+    Faculty: state.FacuntyCoursesReducers,
+  }
+);
 
 
 export default connect(mapStateToProps)(Course);

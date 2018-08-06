@@ -1,19 +1,21 @@
-import React from "react";
+import React from 'react';
 import {
   Grid,
-  Button
-} from "@material-ui/core";
-import { OrtherBanner } from "../layout";
-import { SelectMenu, ShowData } from "./Orthers";
+  Button,
+} from '@material-ui/core';
+import { OrtherBanner } from '../layout';
+import {
+  SelectMenu,
+  ShowData,
+} from './Orthers';
 
 const styles = {
   campusSelect: {
-    textAlign: "center",
-    marginTop: "2em"
-  }
+    textAlign: 'center',
+    marginTop: '2em',
+  },
 };
-
-const Orther = ({ onSelect, rating, onSubmit, dataCourse, rowsPerPage, page, type, onChangePage, onChangeRow,data}) => (
+const Orther = ({ onSelect, rating, onSubmit, dataCourse, rowsPerPage, page, type, onChangePage, onChangeRow, data }) => (
   <div>
     <OrtherBanner/>
     {/*Select Most Course*/}

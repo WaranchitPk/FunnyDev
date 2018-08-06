@@ -1,13 +1,19 @@
-import React from "react";
-import { Grid } from "@material-ui/core";
+import React from 'react';
+import { Grid } from '@material-ui/core';
 
-import { Teacher, Student } from "./Homes";
-import { HomeBanner } from "../layout";
+import {
+  Teacher,
+  Student,
+} from './Homes';
+import { HomeBanner } from '../layout';
+
 const styles = {
   Top: {
-    marginTop: 'auto'
-  }
+    marginTop: 'auto',
+  },
+
 };
+
 const Home = ({ data: { data1, data2 } }) => (
   <div>
     <HomeBanner/>
@@ -22,4 +28,3 @@ const Home = ({ data: { data1, data2 } }) => (
   </div>
 );
 export default Home;
-

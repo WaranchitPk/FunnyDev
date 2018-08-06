@@ -1,12 +1,11 @@
-import React, { Component } from "react";
-import { HomeComponent } from "../components";
-import { connect } from "react-redux";
-import { DashBoardAction } from "../actions";
-class Home extends Component {
+import React, { Component } from 'react';
+import { HomeComponent } from '../components';
+import { connect } from 'react-redux';
+import { DashBoardAction } from '../actions';
 
+class Home extends Component {
   componentDidMount() {
     this.props.dispatch(DashBoardAction());
-    // NameCampus();
   }
 
   render() {
@@ -18,10 +17,12 @@ class Home extends Component {
     );
   }
 }
-const mapStateToProps = (state) =>{
-  return {
-    DashBData: state.DashBoardReducer
+
+const mapStateToProps = state => (
+  {
+    DashBData: state.DashBoardReducer,
+
   }
-};
+);
 
 export default connect(mapStateToProps)(Home);

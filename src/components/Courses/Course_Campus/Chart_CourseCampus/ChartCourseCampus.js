@@ -1,5 +1,14 @@
 import React from "react";
-import {ResponsiveContainer,BarChart,CartesianGrid,XAxis,YAxis,Tooltip,Legend,Bar} from 'recharts';
+import {
+  ResponsiveContainer,
+  BarChart,
+  CartesianGrid,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Legend,
+  Bar
+} from 'recharts';
 
 const ChartCourseCampus = ({data}) => (
   <ResponsiveContainer

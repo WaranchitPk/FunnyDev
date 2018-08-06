@@ -1,18 +1,22 @@
-import React  from "react";
-import { UserBanner } from "../layout";
-import { Grid } from "@material-ui/core";
-import { month } from "../mockData/Users";
-import { ChooseMonth, DashBoardUsers, AccessUsers } from "./Users";
+import React from 'react';
+import { UserBanner } from '../layout';
+import { Grid } from '@material-ui/core';
+import { month } from '../mockData/Users';
+import {
+  ChooseMonth,
+  DashBoardUsers,
+  AccessUsers,
+} from './Users';
 
 const styles = {
   Paper: {
-    marginTop: "5%"
+    marginTop: '5%',
   },
   select: {
-    textAlign: "center",
-    marginTop: "2em",
-    marginBottom: "1em"
-  }
+    textAlign: 'center',
+    marginTop: '2em',
+    marginBottom: '1em',
+  },
 };
 
 const User = ({ year, quarter, showMonth, monthValue, onSubmit, onSelect, dashboardUser, accessUser }) => (
