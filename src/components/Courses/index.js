@@ -11,4 +11,3 @@ export {default as ChartCampus} from './Course_Campus/Chart_CourseCampus/ChartCo
 
 export {default as TitleMain} from './Course_Main/Title_CourseMain/TitleCourseMain';
 export {default as ChartMain} from './Course_Main/Chart_CourseMain/ChartCourseMain';
-export {default as BtExport} from './Course_Main/Bt_ExportChart/BtExport';

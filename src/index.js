@@ -13,16 +13,10 @@ import reducer from "./reducers/rootReducers";
 const store = createStore(reducer,
   applyMiddleware(thunk,promiseMiddleware()));
 
-const renderRootContainer = Root => {
   ReactDom.render(
     <Provider store={store}>
       <Router>
-        <Root/>
+        <App/>
       </Router>
     </Provider>,
     document.getElementById("app"));
-};
-renderRootContainer(App);
-if (module.hot) {
-  module.hot.accept("./components/App", () => renderRootContainer(App));
-}

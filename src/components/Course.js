@@ -1,6 +1,8 @@
 import React from "react";
-import { Grid, ExpansionPanel, ExpansionPanelDetails, ExpansionPanelSummary, Typography } from "@material-ui/core";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import {
+  Tab, Tabs,
+  AppBar
+} from "@material-ui/core";
 
 import { CourseBanner } from "../layout";
 import {
@@ -14,73 +16,53 @@ import {
 } from "./Courses";
 
 const styles = {
-  dashboardAllCampus: {
-    marginTop: "5%"
+  dashboard: {
+    marginTop: "3%"
   },
   campusSelect: {
     textAlign: "center"
   }
 };
 
-const Course = ({ cate, anchorEl, OpenPopup, ClosePopup, ExToPng, ExToJpg, Campus: { dataT }, Faculty: { dataFaculty } }) => (
+const Course = ({
+                  cate,
+                  anchorEl,
+                  OpenPopup,
+                  ClosePopup,
+                  Campus: { dataT },
+                  Faculty: { dataFaculty },
+                  changeTab,
+                  valueTabs
+                }) => (
   <div>
     <CourseBanner/>
-    {/*Main Course All Campus*/}
-    <MainCourse
-      dataT={dataT}
-      btState={anchorEl}
-      Open={OpenPopup}
-      Close={ClosePopup}
-      stylesDash={styles.dashboardAllCampus}/>
-    {/*Course Each Campus*/}
-    {
-      dataFaculty && (
-        <div>
+    <AppBar position="static">
+      <Tabs
+        value={valueTabs}
+        onChange={changeTab}>
+        <Tab label="รวมทุกเขตพื้นที่"/>
+        <Tab label="เขตพื้นที่เชียงราย"/>
+        <Tab label="เขตพื้นที่ตาก"/>
+        <Tab label="เขตพื้นที่น่าน"/>
+        <Tab label="เขตพื้นที่พิษณุโลก"/>
+        <Tab label="เขตพื้นที่เชียงใหม่(ส่วนกลาง)"/>
+        <Tab label="เขตพื้นที่ลำปาง"/>
+      </Tabs>
+    </AppBar>
+    {valueTabs === 0 && <MainCourse
+                          dataT={dataT}
+                          btState={anchorEl}
+                          Open={OpenPopup}
+                          Close={ClosePopup}
+                          stylesDash={styles.dashboard}/>}
 
-          <ExpansionPanel>
-            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon/>}>
-              <Typography>เขตพื้นที่เชียงราย และ ตาก</Typography>
-            </ExpansionPanelSummary>
-            <ExpansionPanelDetails>
-              <Grid
-                container
-                style={styles.dashboardAllCampus}>
-                <CourseCampus1 data={dataFaculty.data.resultFaculty.ChiangRai}/>
-                <CourseCampus2 data={dataFaculty.data.resultFaculty.Tak}/>
-              </Grid>
-            </ExpansionPanelDetails>
-          </ExpansionPanel>
 
-          <ExpansionPanel>
-            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon/>}>
-              <Typography>เขตพื้นที่น่าน และ พิษณุโลก</Typography>
-            </ExpansionPanelSummary>
-            <ExpansionPanelDetails>
-              <Grid
-                container
-                style={styles.dashboardAllCampus}>
-                <CourseCampus3 data={dataFaculty.data.resultFaculty.Nan}/>
-                <CourseCampus4 data={dataFaculty.data.resultFaculty.PL}/>
-              </Grid>
-            </ExpansionPanelDetails>
-          </ExpansionPanel>
-
-          <ExpansionPanel>
-            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon/>}>
-              <Typography>ส่วนกลาง และ เขตพื้นที่ลำปาง</Typography>
-            </ExpansionPanelSummary>
-            <ExpansionPanelDetails>
-              <Grid
-                container
-                style={styles.dashboardAllCampus}>
-                <CourseCampus5 data={dataFaculty.data.resultFaculty.ChiangMai}/>
-                <CourseCampus6 data={dataFaculty.data.resultFaculty.LP}/>
-              </Grid>
-            </ExpansionPanelDetails>
-          </ExpansionPanel>
-        </div>
-      )
-    }
+      {valueTabs === 1 && <CourseCampus1 data={dataFaculty.data.resultFaculty.ChiangRai}/>}
+      {valueTabs === 2 && <CourseCampus2 data={dataFaculty.data.resultFaculty.Tak}/>}
+      {valueTabs === 3 && <CourseCampus3 data={dataFaculty.data.resultFaculty.Nan}/>}
+      {valueTabs === 4 && <CourseCampus4 data={dataFaculty.data.resultFaculty.PL}/>}
+      {valueTabs === 5 && <CourseCampus5 data={dataFaculty.data.resultFaculty.ChiangMai}/>}
+      {valueTabs === 6 && <CourseCampus6 data={dataFaculty.data.resultFaculty.LP}/>}
   </div>
 );
 export default Course;
