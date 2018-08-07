@@ -1,21 +1,28 @@
 /* eslint-disable no-undef */
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { UserComponent } from '../components';
-import { y2018Action } from '../actions';
-
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { UserComponent } from "../components";
+import moment from "moment";
+import {
+  y2018Action,
+  findYear,
+  findValueYear
+} from "../actions";
 
 class User extends Component {
   state = {
-    year: 2018,
+    year: +moment().format("YYYY"),
     quarter: 1,
     showMonth: 3,
     monthValue: 1,
+    valueTabs: 0,
+    isOpenDialogChangeYear: false,
   };
 
   componentDidMount() {
-    this.props.dispatch(y2018Action(this.state.year));
-    console.log('Hello');
+    console.log(this.state.year);
+    // this.props.dispatch(y2018Action(this.state.year));
+    this.props.dispatch(findYear(this.state.year));
   }
 
   ChangeValueFormYear = () => {
@@ -23,21 +30,59 @@ class User extends Component {
   };
   handleSelect = (event) => {
     this.setState({
-      [event.target.name]: event.target.value,
+      [event.target.name]: event.target.value
+    });
+  };
+  //tab change
+  handleTabsChange = (event, value) => {
+    this.setState({
+      valueTabs: value
+    });
+  };
+  //open Dialog Change Year
+  handleOpenDialogChangeYear = () => {
+    console.log('aaaasf');
+    this.setState({
+      isOpenDialogChangeYear: true,
+    });
+    this.props.dispatch(findValueYear());
+  };
+  //close Dialog Change Year
+  handleCloseDialogChangeYear = () => {
+    this.setState({
+      isOpenDialogChangeYear: false
+    });
+  };
+  //set value year on select
+  handleSelectYear = ({ target: { value } }) => {
+    this.setState({
+      year: value
+    });
+  };
+  //submitSelectYear To Show Month Chart
+  handleSubmitYear = () => {
+    this.props.dispatch(findYear(this.state.year));
+    this.setState({
+      isOpenDialogChangeYear: false,
     });
   };
 
   render() {
-    const { data: { dataDefault, accessStat } } = this.props;
-
+    console.log(this.props.dataMonth);
     return (
       <div>
         <UserComponent
           {...this.state}
           onSubmit={this.ChangeValueFormYear}
           onSelect={this.handleSelect}
-          dashboardUser={dataDefault}
-          accessUser={accessStat}/>
+
+          dataMonthChart={this.props.dataMonth}
+          changeTabs={this.handleTabsChange}
+          openDialogChangeYear={this.handleOpenDialogChangeYear}
+          closeDialogChangeYear={this.handleCloseDialogChangeYear}
+          valueYear={this.props.valueYear}
+          selectYear={this.handleSelectYear}
+          submitSelectYear={this.handleSubmitYear}/>
       </div>
     );
   }
@@ -46,7 +91,9 @@ class User extends Component {
 
 const mapStateToProps = state => (
   {
-    data: state.Y2018Reducer,
+    // data: state.Y2018Reducer,
+    valueYear: state.findValueYear.data,
+    dataMonth: state.findChooseYear.data
   }
 );
 export default connect(mapStateToProps)(User);

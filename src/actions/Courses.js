@@ -1,6 +1,9 @@
-import {dashboardCourseCampus,facultyCourseCampus} from "./types";
-import axios from "axios";
-import { api } from "../config";
+import {
+  dashboardCourseCampus,
+  facultyCourseCampus,
+} from './types';
+import axios from 'axios';
+import { api } from '../config';
 
 export const dashBoardCoursesCampus = () => {
   return dispatch => {
@@ -8,15 +11,15 @@ export const dashBoardCoursesCampus = () => {
       .then((result) => {
         dispatch({
           type: dashboardCourseCampus,
-          payload: result
+          payload: result,
         });
       });
   };
 };
-export const facultyCourse = () =>{
-  return dispatch =>{
+export const facultyCourse = () => {
+  return dispatch => {
     return axios.get(`${api}/courses/faculty`)
-      .then((result) =>{
+      .then((result) => {
         dispatch({
           type: facultyCourseCampus,
           payload: result

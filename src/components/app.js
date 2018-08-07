@@ -1,17 +1,33 @@
 import React from 'react';
 import { Grid } from '@material-ui/core';
-import { Header } from '../layout';
+// import { Header } from '../layout';
 import {
   Route,
   Switch,
 } from 'react-router-dom';
-import {
-  HomeContainers,
-  CourseContainer,
-  UserContainer,
-  OrtherStatContainer,
-} from '../containers';
+import Loadable from 'react-loadable';
 
+const Header = Loadable({
+  loader: () => import('../layout/Header'),
+  loading: () => null,
+});
+
+const Home = Loadable({
+  loader: () => import('../containers/Home'),
+  loading: () => null,
+});
+const Course = Loadable({
+  loader: () => import('../containers/Course'),
+  loading: () => null,
+});
+const User = Loadable({
+  loader: () => import('../containers/User'),
+  loading: () => null,
+});
+const Orther = Loadable({
+  loader: () => import('../containers/Orther'),
+  loading: () => null,
+});
 const App = () => (
   <div>
     {/*Header*/}
@@ -24,10 +40,10 @@ const App = () => (
     <Grid container alignContent="center">
       <Grid item xs={12} sm={12}>
         <Switch>
-          <Route exact path='/' component={HomeContainers}/>
-          <Route path='/course_analytic' component={CourseContainer}/>
-          <Route path='/user_analytic' component={UserContainer}/>
-          <Route path='/orther_stat' component={OrtherStatContainer}/>
+          <Route exact path='/' component={Home}/>
+          <Route path='/course_analytic' component={Course}/>
+          <Route path='/user_analytic' component={User}/>
+          <Route path='/orther_stat' component={Orther}/>
         </Switch>
       </Grid>
     </Grid>

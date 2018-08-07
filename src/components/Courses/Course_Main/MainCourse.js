@@ -7,10 +7,7 @@ import {
   List,
   ListItem,
 } from '@material-ui/core';
-import {
-  TitleMain,
-  ChartMain,
-} from '../';
+import Loadable from 'react-loadable';
 import iconChiangrai from '../../../assets/icons/university_chiangrai.svg';
 import iconTak from '../../../assets/icons/university_Tak.svg';
 import iconNan from '../../../assets/icons/university_nan.svg';
@@ -19,6 +16,16 @@ import iconChiangmai from '../../../assets/icons/university_chiangmai.svg';
 import iconLampang from '../../../assets/icons/university_lampang.svg';
 import '../../../styles/course.css';
 
+const TitleCampus = Loadable({
+  loader: () => import('./Title_CourseMain/TitleCourseMain'),
+  loading: () => null,
+});
+const ChartCampus = Loadable({
+  loader: () => import('./Chart_CourseMain/ChartCourseMain'),
+  loading: () => null,
+});
+
+
 const sumValueSubject = (value) => {
   const sumValue = value.reduce((a, b) => (
     a + b.value
@@ -26,7 +33,7 @@ const sumValueSubject = (value) => {
   return sumValue;
 };
 
-const ShowResultSubject = ({value}) => (
+const ShowResultSubject = ({ value }) => (
   <div>
     <Typography variant="title">
       รายวิชาทุกเขตพื้นที่ : {sumValueSubject(value)}
@@ -35,13 +42,13 @@ const ShowResultSubject = ({value}) => (
 );
 
 const iconCampus = [iconChiangrai, iconTak, iconNan, iconPitsanulok, iconChiangmai, iconLampang];
-const MainCourse = ({dataT}) => (
+const MainCourse = ({ dataT }) => (
   <div>
     <Grid container className='mainChart' justify="center">
       <Grid item sm={8} xs={12}>
         <Paper elevation={5}>
-          <TitleMain/>
-          <ChartMain
+          <TitleCampus/>
+          <ChartCampus
             dataT={dataT}/>
         </Paper>
       </Grid>

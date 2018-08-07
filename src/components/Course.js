@@ -4,24 +4,42 @@ import {
   Tabs,
   AppBar,
 } from '@material-ui/core';
-
+import Loadable from 'react-loadable';
 import { CourseBanner } from '../layout';
-import {
-  MainCourse,
-  CourseCampus1,
-  CourseCampus2,
-  CourseCampus3,
-  CourseCampus4,
-  CourseCampus5,
-  CourseCampus6,
-} from './Courses';
 
+const MainAllCampus = Loadable({
+  loader: () => import('./Courses/Course_Main/MainCourse'),
+  loading: () => null,
+});
+const CourseChiangRaiCampus = Loadable({
+  loader: () => import('./Courses/Course_Campus/CourseCampus1'),
+  loading: () => null,
+});
+const CourseTakCampus = Loadable({
+  loader: () => import('./Courses/Course_Campus/CourseCampus2'),
+  loading: () => null,
+});
+const CourseNanCampus = Loadable({
+  loader: () => import('./Courses/Course_Campus/CourseCampus3'),
+  loading: () => null,
+});
+const CoursePitsanulokCampus = Loadable({
+  loader: () => import('./Courses/Course_Campus/CourseCampus4'),
+  loading: () => null,
+});
+const CourseChiangmaiCampus = Loadable({
+  loader: () => import('./Courses/Course_Campus/CourseCampus5'),
+  loading: () => null,
+});
+const CourseLampangCampus = Loadable({
+  loader: () => import('./Courses/Course_Campus/CourseCampus6'),
+  loading: () => null,
+});
 const Course = ({
-
-                  Campus: { dataT },
-                  Faculty: { dataFaculty },
-                  changeTab,
-                  valueTabs
+  Campus: { dataT },
+  Faculty: { dataFaculty },
+  changeTab,
+  valueTabs
 }) => (
   <div>
     <CourseBanner/>
@@ -38,15 +56,15 @@ const Course = ({
         <Tab label="เขตพื้นที่ลำปาง"/>
       </Tabs>
     </AppBar>
-    {valueTabs === 0 && <MainCourse dataT={dataT}/>}
+    {valueTabs === 0 && <MainAllCampus dataT={dataT}/>}
 
 
-    {valueTabs === 1 && <CourseCampus1 data={dataFaculty.data.resultFaculty.ChiangRai}/>}
-    {valueTabs === 2 && <CourseCampus2 data={dataFaculty.data.resultFaculty.Tak}/>}
-    {valueTabs === 3 && <CourseCampus3 data={dataFaculty.data.resultFaculty.Nan}/>}
-    {valueTabs === 4 && <CourseCampus4 data={dataFaculty.data.resultFaculty.PL}/>}
-    {valueTabs === 5 && <CourseCampus5 data={dataFaculty.data.resultFaculty.ChiangMai}/>}
-    {valueTabs === 6 && <CourseCampus6 data={dataFaculty.data.resultFaculty.LP}/>}
+    {valueTabs === 1 && <CourseChiangRaiCampus data={dataFaculty.data.resultFaculty.ChiangRai}/>}
+    {valueTabs === 2 && <CourseTakCampus data={dataFaculty.data.resultFaculty.Tak}/>}
+    {valueTabs === 3 && <CourseNanCampus data={dataFaculty.data.resultFaculty.Nan}/>}
+    {valueTabs === 4 && <CoursePitsanulokCampus data={dataFaculty.data.resultFaculty.PL}/>}
+    {valueTabs === 5 && <CourseChiangmaiCampus data={dataFaculty.data.resultFaculty.ChiangMai}/>}
+    {valueTabs === 6 && <CourseLampangCampus data={dataFaculty.data.resultFaculty.LP}/>}
   </div>
 );
 export default Course;

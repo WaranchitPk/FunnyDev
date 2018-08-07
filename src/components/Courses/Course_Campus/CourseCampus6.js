@@ -3,12 +3,21 @@ import {
   Grid,
   Paper,
 } from '@material-ui/core';
-import {
-  TitleCampus,
-  ChartCampus,
-} from '../';
-import ResultText from './ShowResultText/resultText';
+import Loadable from 'react-loadable';
 import '../../../styles/course.css';
+
+const TitleCampus = Loadable({
+  loader: () => import('./Title_CourseCampus/TitleCourse'),
+  loading: () => null,
+});
+const ChartCampus = Loadable({
+  loader: () => import('./Chart_CourseCampus/ChartCourseCampus'),
+  loading: () => null,
+});
+const ResultText = Loadable({
+  loader: () => import('./ShowResultText/resultText'),
+  loading: () => null,
+});
 
 const nameCampus = 'ลำปาง';
 const CampusLampang = ({data}) => (
