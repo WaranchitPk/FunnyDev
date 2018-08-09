@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid } from '@material-ui/core';
-// import { Header } from '../layout';
+import {hot} from 'react-hot-loader';
 import {
   Route,
   Switch,
@@ -53,4 +53,4 @@ const App = () => (
 );
 
 
-export default App;
+export default hot(module)(App)

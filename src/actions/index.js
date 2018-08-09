@@ -10,4 +10,7 @@ export { DashBoardAction } from './Home';
 export {
   findYear,
   findValueYear,
+  findValueMonth,
+  testApi,
+  findMonth
 } from './Users';

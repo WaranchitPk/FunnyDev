@@ -3,8 +3,11 @@
   "plugins": [
     "react"
   ],
-  "extends": ["airbnb-base", "plugin:react/recommended"],
-    "rules": {
+  "extends": [
+    "airbnb-base",
+    "plugin:react/recommended"
+  ],
+  "rules": {
     "no-console": 0,
     "import/no-extraneous-dependencies": 0,
     "import/no-cycle": 0,
@@ -12,6 +15,10 @@
     "import/order": 0,
     "object-curly-newline": 0,
     "max-len": 0,
-    "import/no-unresolved": 0
+    "import/no-unresolved": 0,
+    "quotes": 0,
+    "comma-dangle": 0,
+    "eol-last": 0,
+    "lines-between-class-members": 0
   }
 }

@@ -11,6 +11,8 @@ import {
   Y2018Reducer,
   findChooseYear,
   findValueYear,
+  findValueMonth,
+  findChooseMonth
 } from './Users';
 import { DashBoardReducer } from './Home';
 
@@ -23,6 +25,8 @@ const reducers = combineReducers({
   FindRatingCourse,
   findChooseYear,
   findValueYear,
+  findValueMonth,
+  findChooseMonth
 });
 
 export default reducers;

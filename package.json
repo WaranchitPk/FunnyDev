@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "parcel -p 3800 public/index.html",
+    "start": "parcel -p 3800  public/index.html",
     "build": "parcel build public/index.html -d build --public-url ./"
   },
   "dependencies": {
@@ -37,6 +37,7 @@
     "@material-ui/icons": "^1.1.0",
     "axios": "^0.18.0",
     "parcel-plugin-eslint": "^1.0.4",
+    "react-hot-loader": "^4.3.4",
     "react-loadable": "^5.4.0",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",

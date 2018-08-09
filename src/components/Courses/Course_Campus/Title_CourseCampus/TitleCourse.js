@@ -6,7 +6,7 @@ const TitleCourse = ({name}) => (
     <Typography
       variant='title'
       align="center">
-      Total Course Statistic
+      จำนวนรายวิชาทั้งหมด
     </Typography>
     <Typography
       variant='subheading'

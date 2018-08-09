@@ -2,10 +2,10 @@ import React from 'react';
 import { Typography } from '@material-ui/core';
 
 
-const TitleDashBoardUsers = ({year}) => (
+const UserViewYear = ({year}) => (
   <Typography variant='title' align="center">
-    Statistics : {year}
+    ผู้เข้าชมระบบ : {year}
   </Typography>
 );
 
-export default TitleDashBoardUsers;
+export default UserViewYear;

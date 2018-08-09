@@ -9,3 +9,5 @@ export const facultyCourseCampus = 'LOAD_COURSE_FACULTY';
 
 export const UserAnalyticFindYear = 'LOAD_YEAR';
 export const UserAnalyticFindValueYear = 'LOAD_VALUE_YEAR';
+export const UserAnalysisFindValueMonth = 'LOAD_VALUE_MONTH';
+export const UserAnalyticFindMonth = 'LOAD_MONTH';

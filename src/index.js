@@ -9,12 +9,11 @@ import {
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import promiseMiddleware from 'redux-promise-middleware';
-
 import reducer from './reducers/rootReducers';
 
 const store = createStore(reducer,
   applyMiddleware(thunk, promiseMiddleware()));
-
+//
 ReactDom.render(
   <Provider store={store}>
     <Router>
@@ -22,3 +21,4 @@ ReactDom.render(
     </Router>
   </Provider>,
   document.getElementById('app'));
+

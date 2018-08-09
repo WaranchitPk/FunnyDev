@@ -3,7 +3,7 @@ import { Typography } from '@material-ui/core';
 
 const TitleCourseMain = () => (
   <Typography variant='title' align="center">
-    Course Statics for each campus
+    จำนวนรายวิชาของทุกเขตพื้นที่
   </Typography>
 );
 
