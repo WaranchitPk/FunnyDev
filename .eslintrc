@@ -19,6 +19,7 @@
     "quotes": 0,
     "comma-dangle": 0,
     "eol-last": 0,
-    "lines-between-class-members": 0
+    "lines-between-class-members": 0,
+    "operator-linebreak": 0
   }
 }
