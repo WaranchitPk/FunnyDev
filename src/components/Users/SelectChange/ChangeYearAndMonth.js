@@ -2,7 +2,8 @@ import React from "react";
 import {
   MenuItem,
   Select,
-  Button
+  Button,
+  CircularProgress
 } from "@material-ui/core";
 
 const ChangeYearAndMonth = ({
@@ -34,7 +35,7 @@ const ChangeYearAndMonth = ({
           )
         }
         {
-          valueMonth && (
+          valueMonth === null ? (<CircularProgress size={30} thickness={2}/>) : (
             <div>
               <Select
                 value={month}
