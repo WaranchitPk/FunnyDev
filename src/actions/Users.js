@@ -1,9 +1,11 @@
 import {
   y2018Type,
-  UserAnalyticFindYear,
   UserAnalyticFindValueYear,
   UserAnalysisFindValueMonth,
-  UserAnalyticFindMonth
+  UserAnalyticUserViewFindYear,
+  UserAnalyticUserViewFindMonth,
+  UserAnalyticUserUseFindYear,
+  UserAnalyticUserUseFindMonth
 } from "./types";
 
 import {
@@ -30,14 +32,7 @@ export const y2018Action = (id) => {
     };
   }
 };
-export const findYear = year => (
-  dispatch => {
-    dispatch({
-      type: UserAnalyticFindYear,
-      payload: axios.get(`${api}/users/findYear/${year}`)
-    });
-  }
-);
+//find value year - Select
 export const findValueYear = () => (
   dispatch => {
     dispatch({
@@ -46,6 +41,7 @@ export const findValueYear = () => (
     });
   }
 );
+//find value month - Select
 export const findValueMonth = year => (
   dispatch => {
     dispatch({
@@ -54,16 +50,44 @@ export const findValueMonth = year => (
     });
   }
 );
-export const testApi = (year) => {
-  axios.get(`${api}/users/valueMonth/${year}`).then(data => {
-    console.log("DataMonth", data);
-  });
-};
-export const findMonth = (year, month) => (
+//find User View data month if your choose year - Chart
+export const UserViewFindMonthData = year => (
   dispatch => {
     dispatch({
-      type: UserAnalyticFindMonth,
-      payload: axios.get(`${api}/users/findMonth/${year}/${month}`),
+      type: UserAnalyticUserViewFindYear,
+      payload: axios.get(`${api}/users/userview/findYear/${year}`)
     });
   }
 );
+//find User View data day if your choose year&&month - Chart
+export const UserViewFindDayData = (year, month) => (
+  dispatch => {
+    dispatch({
+      type: UserAnalyticUserViewFindMonth,
+      payload: axios.get(`${api}/users/userview/findMonth/${year}/${month}`),
+    });
+  }
+);
+//find User Use data month if your choose year - Chart
+export const UserUseFindMonthData = year => (
+  dispatch => {
+    dispatch({
+      type: UserAnalyticUserUseFindYear,
+      payload: axios.get(`${api}/users/useruse/findYear/${year}`)
+    });
+  }
+);
+//find User Use data day if your choose year&&month - Chart
+export const UserUseFindDayData = (year, month) => (
+  dispatch => {
+    dispatch({
+      type: UserAnalyticUserUseFindMonth,
+      payload: axios.get(`${api}/users/useruse/findMonth/${year}/${month}`),
+    });
+  }
+);
+export const testApi = (year) => {
+  axios.get(`${api}/users/userview/valueMonth/${year}`).then(data => {
+    console.log("DataMonth", data);
+  });
+};

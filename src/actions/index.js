@@ -8,9 +8,11 @@ export { chiangmai } from './Orhter';
 export { y2018Action } from './Users';
 export { DashBoardAction } from './Home';
 export {
-  findYear,
+  testApi,
   findValueYear,
   findValueMonth,
-  testApi,
-  findMonth
+  UserViewFindMonthData,
+  UserViewFindDayData,
+  UserUseFindMonthData,
+  UserUseFindDayData
 } from './Users';

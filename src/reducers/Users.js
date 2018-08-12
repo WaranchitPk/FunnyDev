@@ -1,9 +1,11 @@
 import {
   y2018Type,
-  UserAnalyticFindYear,
   UserAnalyticFindValueYear,
   UserAnalysisFindValueMonth,
-  UserAnalyticFindMonth
+  UserAnalyticUserViewFindYear,
+  UserAnalyticUserViewFindMonth,
+  UserAnalyticUserUseFindYear,
+  UserAnalyticUserUseFindMonth
 } from "../actions/types";
 
 export function Y2018Reducer(state = {}, action) {
@@ -17,27 +19,6 @@ export function Y2018Reducer(state = {}, action) {
       return state;
   }
 }
-export const findChooseYear = (state = {}, action) => {
-  switch (action.type) {
-    case `${UserAnalyticFindYear}_PENDING`:
-      return {
-        ...state,
-        data: null
-      };
-    case `${UserAnalyticFindYear}_FULFILLED`:
-      return {
-        ...state,
-        data: action.payload
-      };
-    case `${UserAnalyticFindYear}_REJECTED`:
-      return {
-        ...state,
-        err: "error"
-      };
-    default:
-      return state;
-  }
-};
 export const findValueYear = (state = {}, action) => {
   switch (action.type) {
     case `${UserAnalyticFindValueYear}_PENDING`:
@@ -81,20 +62,89 @@ export const findValueMonth = (state = {}, action) => {
       return state;
   }
 };
-
-export const findChooseMonth = (state = {}, action) => {
+/// User View
+//if you choose year to show data month - user view
+export const UserViewFindChooseYear = (state = {}, action) => {
   switch (action.type) {
-    case `${UserAnalyticFindMonth}_PENDING`:
+    case `${UserAnalyticUserViewFindYear}_PENDING`:
       return {
         ...state,
         data: null
       };
-    case `${UserAnalyticFindMonth}_FULFILLED`:
+    case `${UserAnalyticUserViewFindYear}_FULFILLED`:
       return {
         ...state,
         data: action.payload
       };
-    case `${UserAnalyticFindMonth}_REJECTED`:
+    case `${UserAnalyticUserViewFindYear}_REJECTED`:
+      return {
+        ...state,
+        err: "error"
+      };
+    default:
+      return state;
+  }
+};
+//if you choose month to show data month&&day - user view
+export const UserViewFindChooseMonth = (state = {}, action) => {
+  switch (action.type) {
+    case `${UserAnalyticUserViewFindMonth}_PENDING`:
+      return {
+        ...state,
+        data: null
+      };
+    case `${UserAnalyticUserViewFindMonth}_FULFILLED`:
+      return {
+        ...state,
+        data: action.payload
+      };
+    case `${UserAnalyticUserViewFindMonth}_REJECTED`:
+      return {
+        ...state,
+        data: "err"
+      };
+    default:
+      return state;
+  }
+};
+
+///User Use
+//if you choose year to show data month - user view
+export const UserUseFindChooseYear = (state = {}, action) => {
+  switch (action.type) {
+    case `${UserAnalyticUserUseFindYear}_PENDING`:
+      return {
+        ...state,
+        data: null
+      };
+    case `${UserAnalyticUserUseFindYear}_FULFILLED`:
+      return {
+        ...state,
+        data: action.payload
+      };
+    case `${UserAnalyticUserUseFindYear}_REJECTED`:
+      return {
+        ...state,
+        err: "error"
+      };
+    default:
+      return state;
+  }
+};
+//if you choose month to show data month&&day - user view
+export const UserUseFindChooseMonth = (state = {}, action) => {
+  switch (action.type) {
+    case `${UserAnalyticUserUseFindMonth}_PENDING`:
+      return {
+        ...state,
+        data: null
+      };
+    case `${UserAnalyticUserUseFindMonth}_FULFILLED`:
+      return {
+        ...state,
+        data: action.payload
+      };
+    case `${UserAnalyticUserUseFindMonth}_REJECTED`:
       return {
         ...state,
         data: "err"

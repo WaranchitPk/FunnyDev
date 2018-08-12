@@ -20,7 +20,7 @@ const ShowResultFindMonth = ({ dataChartDay, rowsPerPage, page, onChangePage, on
         <Table>
           <TableHead>
             <TableCell>วันที่</TableCell>
-            <TableCell>จำนวน</TableCell>
+            <TableCell>จำนวน/ครั้ง</TableCell>
           </TableHead>
           <TableBody>
             {

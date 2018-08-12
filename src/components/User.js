@@ -2,29 +2,31 @@ import React from "react";
 import { UserBanner } from "../layout";
 import Loadable from "react-loadable";
 import {
-  Grid,
   Tab,
   Tabs,
   AppBar,
+  Grid,
   BottomNavigation,
   BottomNavigationAction
 } from "@material-ui/core";
+
+import "../styles/user.css";
+import UserView from "./Users/UserView";
+import UserUse from "./Users/UserUse";
+import { UserComponent } from "./index";
 import RestoreIcon from "@material-ui/icons/Restore";
 import FavoriteIcon from "@material-ui/icons/Favorite";
-import ChartViewYearAndMonth from "./Users/Chart/ChartUserViewDays";
-import "../styles/user.css";
-import { UserComponent } from "./index";
-
-const ChartViewYear = Loadable({
-  loader: () => import("./Users/Chart/ChartUserViewMonth"),
-  loading: () => null
-});
+// const ChartViewYear = Loadable({
+//   loader: () => import("./Users/Chart/ChartUserViewMonth"),
+//   loading: () => null
+// });
 // const ChartViewYearAndMonth = Loadable({
 //   loader: () => import("./Users/Chart/ChartUserViewDays"),
 //   loading: () => null
 // });
 const User = ({
-  valueBtNavigate,
+  valueBtNavigateUserView,
+  valueBtNavigateUserUse,
   year,
   quarter,
   showMonth,
@@ -36,7 +38,8 @@ const User = ({
   dataMonthChart,
   valueTabs,
   changeTabs,
-  changeBtNavigate,
+  changeBtNavigateUserView,
+  changeBtNavigateUserUse,
   selectYear,
   valueYear,
   submitSelectYear,
@@ -48,7 +51,9 @@ const User = ({
   rowsPerPage,
   page,
   onChangePageTableInResultCardUserViewDays,
-  onChangeRowPerPageTableInResultCardUserViewDays
+  onChangeRowPerPageTableInResultCardUserViewDays,
+  dataMonthChartUserUse,
+  dataDayChartUserUse
 }) => {
   return (
     <div>
@@ -62,37 +67,49 @@ const User = ({
           <Tab label='ผู้เข้าใช้ระบบ'/>
         </Tabs>
       </AppBar>
-      {/*button Your Choose*/}
-      <Grid container justify='center' className='btYourChoose'>
-        <Grid item>
-          <BottomNavigation
-            value={valueBtNavigate}
-            onChange={changeBtNavigate}
-            showLabels>
-            <BottomNavigationAction label="แสดงรายเดือน" icon={<RestoreIcon/>}/>
-            <BottomNavigationAction label="แสดงรายวัน" icon={<FavoriteIcon/>}/>
-          </BottomNavigation>
-        </Grid>
-      </Grid>
-      {valueBtNavigate === 0 && <ChartViewYear
-        year={year}
-        dataChartMonth={dataMonthChart}
-        valueYear={valueYear}
-        selectYear={selectYear}
-        submitSelectYear={submitSelectYear}/>}
-      {valueBtNavigate === 1 && <ChartViewYearAndMonth
-        year={year}
-        valueYear={valueYear}
-        month={month}
-        valueUserViewDaysMonth={valueUserViewDaysMonth}
-        selectUserViewDayYear={selectUserViewDaysYear}
-        selectUserViewDayMonth={selectUserViewDaysMonth}
-        submitSelectUserViewDay={submitSelectUserViewDays}
-        dataChartDay={dataDayChart}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onChangePage={onChangePageTableInResultCardUserViewDays}
-        onChangeRowPerPage={onChangeRowPerPageTableInResultCardUserViewDays}/>}
+      {
+        valueTabs === 0 && (<UserView
+          valueBtNavigate={valueBtNavigateUserView}
+          changeBtNavigate={changeBtNavigateUserView}
+          year={year}
+          dataMonthChart={dataMonthChart}
+          valueYear={valueYear}
+          selectYear={selectYear}
+          submitSelectYear={submitSelectYear}
+          month={month}
+          valueUserViewDaysMonth={valueUserViewDaysMonth}
+          selectUserViewDaysYear={selectUserViewDaysYear}
+          selectUserViewDaysMonth={selectUserViewDaysMonth}
+          submitSelectUserViewDays={submitSelectUserViewDays}
+          dataDayChart={dataDayChart}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onChangePageTableInResultCardUserViewDays={onChangePageTableInResultCardUserViewDays}
+          onChangeRowPerPageTableInResultCardUserViewDays={onChangeRowPerPageTableInResultCardUserViewDays}
+        />)
+      }
+      {
+        valueTabs === 1 && (<UserUse
+          valueBtNavigate={valueBtNavigateUserUse}
+          changeBtNavigate={changeBtNavigateUserUse}
+          year={year}
+          dataMonthChart={dataMonthChartUserUse}
+          valueYear={valueYear}
+          selectYear={selectYear}
+          submitSelectYear={submitSelectYear}
+          month={month}
+          valueUserViewDaysMonth={valueUserViewDaysMonth}
+          selectUserViewDaysYear={selectUserViewDaysYear}
+          selectUserViewDaysMonth={selectUserViewDaysMonth}
+          submitSelectUserViewDays={submitSelectUserViewDays}
+          dataDayChart={dataDayChartUserUse}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onChangePageTableInResultCardUserViewDays={onChangePageTableInResultCardUserViewDays}
+          onChangeRowPerPageTableInResultCardUserViewDays={onChangeRowPerPageTableInResultCardUserViewDays}
+        />)
+      }
+
     </div>
   );
 };

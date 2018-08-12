@@ -9,10 +9,12 @@ import {
 } from './Orther';
 import {
   Y2018Reducer,
-  findChooseYear,
+  UserViewFindChooseYear,
   findValueYear,
   findValueMonth,
-  findChooseMonth
+  UserViewFindChooseMonth,
+  UserUseFindChooseYear,
+  UserUseFindChooseMonth
 } from './Users';
 import { DashBoardReducer } from './Home';
 
@@ -23,10 +25,12 @@ const reducers = combineReducers({
   DashBoardCoursesReducers,
   FacuntyCoursesReducers,
   FindRatingCourse,
-  findChooseYear,
-  findValueYear,
-  findValueMonth,
-  findChooseMonth
+  FindValueYear: findValueYear,
+  FindValueMonth: findValueMonth,
+  UserViewFindChooseYear,
+  UserViewFindChooseMonth,
+  UserUseFindChooseYear,
+  UserUseFindChooseMonth
 });
 
 export default reducers;

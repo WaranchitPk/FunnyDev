@@ -17,7 +17,7 @@ const UserViewMonths = ({ dataChartMonth }) => {
   // let dataKeyXAxis = "";
   // let dataBar = "";
   if (dataChartMonth !== undefined && dataChartMonth !== null) {
-    console.log("dataMonth", dataChartMonth.data.result);
+    console.log("UserViewdataMonth", dataChartMonth.data.result);
     showData = dataChartMonth.data.result;
     // dataKeyXAxis = "month";
     // dataBar = "countMonth";

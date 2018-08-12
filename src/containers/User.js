@@ -5,15 +5,22 @@ import { UserComponent } from "../components";
 import moment from "moment";
 import {
   y2018Action,
-  findYear,
   findValueYear,
   findValueMonth,
-  findMonth
+  UserViewFindMonthData,
+  UserViewFindDayData,
+  UserUseFindMonthData,
+  UserUseFindDayData
 } from "../actions";
+import {
+  UserUseFindChooseMonth,
+  UserUseFindChooseYear
+} from "../reducers/Users";
 
 class User extends Component {
   state = {
-    valueBtNavigate: "",
+    valueBtNavigateUserView: "",
+    valueBtNavigateUserUse: "",
     year: +moment().format("YYYY"),
     quarter: 1,
     showMonth: 3,
@@ -25,7 +32,7 @@ class User extends Component {
 
   componentDidMount() {
     this.props.dispatch(findValueYear());
-    // this.props.dispatch(findValueMonth(this.state.year));
+    // this.props.dispatch(FindValueMonth(this.state.year));
 
   }
 
@@ -39,23 +46,16 @@ class User extends Component {
   };
   //tab change
   handleTabsChange = (event, value) => {
+    const { year } = this.state;
     this.setState({
       valueTabs: value
     });
+    if (value === 0) {
+      this.props.dispatch(UserViewFindMonthData(year));
+    } else {
+      this.props.dispatch(UserUseFindMonthData(year));
+    }
   };
-  // //open Dialog Change Year
-  // handleOpenDialogChangeYear = () => {
-  //   this.setState({
-  //     isOpenDialogChangeYear: true
-  //   });
-  //
-  // };
-  // //close Dialog Change Year
-  // handleCloseDialogChangeYear = () => {
-  //   this.setState({
-  //     isOpenDialogChangeYear: false
-  //   });
-  // };
   //set value year on select
   handleSelectYear = ({ target: { value } }) => {
     this.setState({
@@ -63,24 +63,13 @@ class User extends Component {
     });
   };
   //submitSelectYear To Show Month Chart
-  handleSubmitYear = () => {
-    this.props.dispatch(findYear(this.state.year));
-
+  handleSubmitYearUserView = () => {
+    if (this.state.valueTabs === 0) {
+      this.props.dispatch(UserViewFindMonthData(this.state.year));
+    } else {
+      this.props.dispatch(UserUseFindMonthData(this.state.year));
+    }
   };
-  // //open Dialog Change Month
-  // handleOpenDialogChangeMonth = () => {
-  //   this.setState({
-  //     isOpenDialogChangeMonth: true
-  //   });
-  //   this.props.dispatch(findValueMonth(this.state.year));
-  //   // this.props.dispatch(findValueMonth(this.state.year));
-  // };
-  // //close Dialog Change Month
-  // handleCloseDialogChangeMonth = () => {
-  //   this.setState({
-  //     isOpenDialogChangeMonth: false
-  //   });
-  // };
   //set value month && year
   handleSelectYearUserViewDays = ({ target: { value } }) => {
     this.setState({
@@ -96,58 +85,77 @@ class User extends Component {
   //submitSelectYearAndMonth To Show Month Chart
   handleSubmitUserViewDays = () => {
     const { year, month } = this.state;
-    this.props.dispatch(findMonth(year, month));
+    if (this.state.valueTabs === 0) {
+      this.props.dispatch(UserViewFindDayData(year, month));
+    } else {
+      this.props.dispatch(UserUseFindDayData(year, month));
+    }
   };
 
-  //change Bt Navigate
-  handleChangeBtNavigate = (event, value) => {
+  //change Bt Navigate User View
+  handleChangeBtNavigateUserView = (event, value) => {
     const { year, month } = this.state;
-    this.setState({ valueBtNavigate: value });
+    this.setState({
+      valueBtNavigateUserView: value,
+      valueBtNavigateUserUse: ""
+    });
     if (value === 0) {
-      this.props.dispatch(findYear(year));
-      // this.props.dispatch(findValueYear());
+      // this.props.dispatch(UserViewFindMonthData(year));
+      // this.props.dispatch(FindValueYear());
     } else if (value === 1) {
       this.props.dispatch(findValueMonth(year));
-      this.props.dispatch(findMonth(year, month));
-      // this.props.dispatch(findValueYear());
-
+      this.props.dispatch(UserViewFindDayData(year, month));
+      // this.props.dispatch(FindValueYear());
+    }
+  };
+  //change Bt Navigate User Use
+  handleChangeBtNavigateUserUse = (event, value) => {
+    this.setState({
+      valueBtNavigateUserUse: value,
+      valueBtNavigateUserView: ""
+    });
+    if (value === 0) {
+      // this.props.dispatch(UserViewFindMonthData(year));
+      // this.props.dispatch(FindValueYear());
+    } else if (value === 1) {
+      this.props.dispatch(findValueMonth(year));
+      this.props.dispatch(UserUseFindDayData(year, month));
+      // this.props.dispatch(FindValueYear());
     }
   };
   //change page in result card UserViewDays
-  handleChangePage = (event, page) => {
+  handleChangePageUserView = (event, page) => {
     this.setState({ page });
   };
   //change row per page in in result card UserViewDays
-  handleChangeRowsPerPage = event => {
+  handleChangeRowsPerPageUserView = event => {
     this.setState({ rowsPerPage: event.target.value });
   };
 
   render() {
-    const { dataMonth, valueYear, valueMonth, dataDay } = this.props;
-    console.log("month", valueMonth);
+    const { UserViewdataMonth, valueYear, valueMonth, UserViewdataDay, UserUsedataMonth, UserUsedataDay } = this.props;
     return (
       <div>
         <UserComponent
           {...this.state}
           onSubmit={this.ChangeValueFormYear}
           onSelect={this.handleSelect}
-          dataMonthChart={dataMonth}
+          dataMonthChart={UserViewdataMonth}
           changeTabs={this.handleTabsChange}
-          changeBtNavigate={this.handleChangeBtNavigate}
-          // openDialogChangeYear={this.handleOpenDialogChangeYear}
-          // closeDialogChangeYear={this.handleCloseDialogChangeYear}
+          changeBtNavigateUserView={this.handleChangeBtNavigateUserView}
+          changeBtNavigateUserUse={this.handleChangeBtNavigateUserUse}
           valueYear={valueYear}
           selectYear={this.handleSelectYear}
-          submitSelectYear={this.handleSubmitYear}
+          submitSelectYear={this.handleSubmitYearUserView}
           valueUserViewDaysMonth={valueMonth}
-          // openDialogChangeMonth={this.handleOpenDialogChangeMonth}
-          // closeDialogChangeMonth={this.handleCloseDialogChangeMonth}
           selectUserViewDaysYear={this.handleSelectYearUserViewDays}
           selectUserViewDaysMonth={this.handleSelectMonthUserViewDays}
           submitSelectUserViewDays={this.handleSubmitUserViewDays}
-          dataDayChart={dataDay}
-          onChangePageTableInResultCardUserViewDays={this.handleChangePage}
-          onChangeRowPerPageTableInResultCardUserViewDays={this.handleChangeRowsPerPage}/>
+          dataDayChart={UserViewdataDay}
+          onChangePageTableInResultCardUserViewDays={this.handleChangePageUserView}
+          onChangeRowPerPageTableInResultCardUserViewDays={this.handleChangeRowsPerPageUserView}
+          dataMonthChartUserUse={UserUsedataMonth}
+          dataDayChartUserUse={UserUsedataDay}/>
       </div>
     );
   }
@@ -156,10 +164,12 @@ class User extends Component {
 
 const mapStateToProps = state => (
   {
-    dataDay: state.findChooseMonth.data,
-    valueMonth: state.findValueMonth.data,
-    valueYear: state.findValueYear.data,
-    dataMonth: state.findChooseYear.data
+    valueMonth: state.FindValueMonth.data,
+    valueYear: state.FindValueYear.data,
+    UserViewdataDay: state.UserViewFindChooseMonth.data,
+    UserViewdataMonth: state.UserViewFindChooseYear.data,
+    UserUsedataMonth: state.UserUseFindChooseYear.data,
+    UserUsedataDay: state.UserUseFindChooseMonth.data
   }
 );
 export default connect(mapStateToProps)(User);
