@@ -10,12 +10,10 @@ import {
   UserViewFindMonthData,
   UserViewFindDayData,
   UserUseFindMonthData,
-  UserUseFindDayData
+  UserUseFindDayData,
+  UserViewFindSumYear
 } from "../actions";
-import {
-  UserUseFindChooseMonth,
-  UserUseFindChooseYear
-} from "../reducers/Users";
+
 
 class User extends Component {
   state = {
@@ -100,6 +98,8 @@ class User extends Component {
       valueBtNavigateUserUse: ""
     });
     if (value === 0) {
+      this.props.dispatch(UserViewFindSumYear(year));
+    } else if (value === 1) {
       // this.props.dispatch(UserViewFindMonthData(year));
       // this.props.dispatch(FindValueYear());
     } else if (value === 1) {
@@ -117,7 +117,7 @@ class User extends Component {
     if (value === 0) {
       // this.props.dispatch(UserViewFindMonthData(year));
       // this.props.dispatch(FindValueYear());
-    } else if (value === 1) {
+    } else if (value === 2) {
       this.props.dispatch(findValueMonth(year));
       this.props.dispatch(UserUseFindDayData(year, month));
       // this.props.dispatch(FindValueYear());
@@ -133,7 +133,8 @@ class User extends Component {
   };
 
   render() {
-    const { UserViewdataMonth, valueYear, valueMonth, UserViewdataDay, UserUsedataMonth, UserUsedataDay } = this.props;
+    const { UserViewdataMonth, valueYear, valueMonth, UserViewdataDay, UserUsedataMonth, UserUsedataDay, sumYearUse } = this.props;
+
     return (
       <div>
         <UserComponent
@@ -155,7 +156,8 @@ class User extends Component {
           onChangePageTableInResultCardUserViewDays={this.handleChangePageUserView}
           onChangeRowPerPageTableInResultCardUserViewDays={this.handleChangeRowsPerPageUserView}
           dataMonthChartUserUse={UserUsedataMonth}
-          dataDayChartUserUse={UserUsedataDay}/>
+          dataDayChartUserUse={UserUsedataDay}
+          resultSumUserView={sumYearUse}/>
       </div>
     );
   }
@@ -169,7 +171,8 @@ const mapStateToProps = state => (
     UserViewdataDay: state.UserViewFindChooseMonth.data,
     UserViewdataMonth: state.UserViewFindChooseYear.data,
     UserUsedataMonth: state.UserUseFindChooseYear.data,
-    UserUsedataDay: state.UserUseFindChooseMonth.data
+    UserUsedataDay: state.UserUseFindChooseMonth.data,
+    sumYearUse: state.UserViewFindSumYear.data
   }
 );
 export default connect(mapStateToProps)(User);

@@ -5,7 +5,8 @@ import {
   UserAnalyticUserViewFindYear,
   UserAnalyticUserViewFindMonth,
   UserAnalyticUserUseFindYear,
-  UserAnalyticUserUseFindMonth
+  UserAnalyticUserUseFindMonth,
+  UserAnalyticUserViewSumYear
 } from "../actions/types";
 
 export function Y2018Reducer(state = {}, action) {
@@ -145,6 +146,29 @@ export const UserUseFindChooseMonth = (state = {}, action) => {
         data: action.payload
       };
     case `${UserAnalyticUserUseFindMonth}_REJECTED`:
+      return {
+        ...state,
+        data: "err"
+      };
+    default:
+      return state;
+  }
+};
+
+//if you choose month to show data month&&day - user view
+export const UserViewFindSumYear = (state = {}, action) => {
+  switch (action.type) {
+    case `${UserAnalyticUserViewSumYear}_PENDING`:
+      return {
+        ...state,
+        data: null
+      };
+    case `${UserAnalyticUserViewSumYear}_FULFILLED`:
+      return {
+        ...state,
+        data: action.payload
+      };
+    case `${UserAnalyticUserViewSumYear}_REJECTED`:
       return {
         ...state,
         data: "err"

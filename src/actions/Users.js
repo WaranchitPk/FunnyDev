@@ -5,7 +5,8 @@ import {
   UserAnalyticUserViewFindYear,
   UserAnalyticUserViewFindMonth,
   UserAnalyticUserUseFindYear,
-  UserAnalyticUserUseFindMonth
+  UserAnalyticUserUseFindMonth,
+  UserAnalyticUserViewSumYear
 } from "./types";
 
 import {
@@ -20,14 +21,14 @@ export const y2018Action = (id) => {
     return dispatch => {
       dispatch({
         type: y2018Type,
-        payload: y2018,
+        payload: y2018
       });
     };
   } else {
     return dispatch => {
       dispatch({
         type: y2018Type,
-        payload: y2017,
+        payload: y2017
       });
     };
   }
@@ -64,7 +65,7 @@ export const UserViewFindDayData = (year, month) => (
   dispatch => {
     dispatch({
       type: UserAnalyticUserViewFindMonth,
-      payload: axios.get(`${api}/users/userview/findMonth/${year}/${month}`),
+      payload: axios.get(`${api}/users/userview/findMonth/${year}/${month}`)
     });
   }
 );
@@ -82,7 +83,7 @@ export const UserUseFindDayData = (year, month) => (
   dispatch => {
     dispatch({
       type: UserAnalyticUserUseFindMonth,
-      payload: axios.get(`${api}/users/useruse/findMonth/${year}/${month}`),
+      payload: axios.get(`${api}/users/useruse/findMonth/${year}/${month}`)
     });
   }
 );
@@ -91,3 +92,12 @@ export const testApi = (year) => {
     console.log("DataMonth", data);
   });
 };
+
+export const UserViewFindSumYear = year => (
+  dispatch => {
+    dispatch({
+      type: UserAnalyticUserViewSumYear,
+      payload: axios.get(`${api}/users/userview/findSum/${year}`)
+    });
+  }
+);

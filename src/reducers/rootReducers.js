@@ -2,6 +2,8 @@ import { combineReducers } from 'redux';
 import {
   DashBoardCoursesReducers,
   FacuntyCoursesReducers,
+  FindCourseAllCampusGraph,
+  FindCourseEachCampusGraph
 } from './Courses';
 import {
   ChiangmaiCorse,
@@ -14,7 +16,8 @@ import {
   findValueMonth,
   UserViewFindChooseMonth,
   UserUseFindChooseYear,
-  UserUseFindChooseMonth
+  UserUseFindChooseMonth,
+  UserViewFindSumYear
 } from './Users';
 import { DashBoardReducer } from './Home';
 
@@ -30,7 +33,10 @@ const reducers = combineReducers({
   UserViewFindChooseYear,
   UserViewFindChooseMonth,
   UserUseFindChooseYear,
-  UserUseFindChooseMonth
+  UserUseFindChooseMonth,
+  UserViewFindSumYear,
+  FindCourseAllCampusGraph,
+  FindCourseEachCampusGraph
 });
 
 export default reducers;

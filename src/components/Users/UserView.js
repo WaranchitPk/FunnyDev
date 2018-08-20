@@ -8,7 +8,7 @@ import RestoreIcon from "@material-ui/icons/Restore";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import ChartViewYearAndMonth from "./Chart/ChartUserViewDays";
 import Loadable from "react-loadable";
-
+import ChartSumUserView from './Chart/Chart_train_sum/ChartSumUserView';
 const ChartViewYear = Loadable({
   loader: () => import("./Chart/ChartUserViewMonth"),
   loading: () => null
@@ -31,7 +31,8 @@ const UserView = ({
   rowsPerPage,
   page,
   onChangePageTableInResultCardUserViewDays,
-  onChangeRowPerPageTableInResultCardUserViewDays
+  onChangeRowPerPageTableInResultCardUserViewDays,
+  resultSumYear
 }) => (
   <div>
     {/*button navigation Your Choose show month or day*/}
@@ -41,18 +42,22 @@ const UserView = ({
           value={valueBtNavigate}
           onChange={changeBtNavigate}
           showLabels>
+          <BottomNavigationAction label="รวม" icon={<RestoreIcon/>}/>
           <BottomNavigationAction label="แสดงรายเดือน" icon={<RestoreIcon/>}/>
           <BottomNavigationAction label="แสดงรายวัน" icon={<FavoriteIcon/>}/>
         </BottomNavigation>
       </Grid>
     </Grid>
-    {valueBtNavigate === 0 && <ChartViewYear
+    {valueBtNavigate === 0 && (
+      <ChartSumUserView resultSumYear={resultSumYear}/>
+    )}
+    {valueBtNavigate === 1 && <ChartViewYear
       year={year}
       dataChartMonth={dataMonthChart}
       valueYear={valueYear}
       selectYear={selectYear}
       submitSelectYear={submitSelectYear}/>}
-    {valueBtNavigate === 1 && <ChartViewYearAndMonth
+    {valueBtNavigate === 2 && <ChartViewYearAndMonth
       year={year}
       valueYear={valueYear}
       month={month}

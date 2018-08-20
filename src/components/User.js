@@ -53,7 +53,8 @@ const User = ({
   onChangePageTableInResultCardUserViewDays,
   onChangeRowPerPageTableInResultCardUserViewDays,
   dataMonthChartUserUse,
-  dataDayChartUserUse
+  dataDayChartUserUse,
+  resultSumUserView
 }) => {
   return (
     <div>
@@ -86,6 +87,7 @@ const User = ({
           page={page}
           onChangePageTableInResultCardUserViewDays={onChangePageTableInResultCardUserViewDays}
           onChangeRowPerPageTableInResultCardUserViewDays={onChangeRowPerPageTableInResultCardUserViewDays}
+          resultSumYear={resultSumUserView}
         />)
       }
       {

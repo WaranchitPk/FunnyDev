@@ -1,28 +1,34 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import domtoimage from 'dom-to-image';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
+import domtoimage from "dom-to-image";
+import { connect } from "react-redux";
 
+import moment from "moment";
 import {
   png,
-  jpeg,
-} from '../lib/export';
-import { CourseComponent } from '../components';
+  jpeg
+} from "../lib/export";
+import { CourseComponent } from "../components";
 import {
   dashBoardCoursesCampus,
   facultyCourse,
-} from '../actions';
+  findGraphtrain,
+  findEachGraph
+} from "../actions";
+
 
 class Course extends Component {
   state = {
-    cate: 'Chiangmai',
+    cate: "Chiangmai",
     anchorEl: null,
     valueTabs: 0,
+    year: moment().format("YYYY")
   };
 
   componentDidMount() {
     this.props.dispatch(dashBoardCoursesCampus());
     this.props.dispatch(facultyCourse());
+    this.props.dispatch(findGraphtrain(this.state.year));
   }
 
   handleClick = (event) => {
@@ -35,7 +41,21 @@ class Course extends Component {
 
   //change Tab
   handleChangeTab = (event, value) => {
+    const { dispatch } = this.props;
     this.setState({ valueTabs: value });
+    if (value === 1) {
+      dispatch(findEachGraph(value, this.state.year));
+    } else if (value === 2) {
+      dispatch(findEachGraph(value, this.state.year));
+    } else if (value === 3) {
+      dispatch(findEachGraph(value, this.state.year));
+    } else if (value === 4) {
+      dispatch(findEachGraph(value, this.state.year));
+    } else if (value === 5) {
+      dispatch(findEachGraph(value, this.state.year));
+    } else if (value === 6) {
+      dispatch(findEachGraph(value, this.state.year));
+    }
   };
 
   //export
@@ -52,6 +72,7 @@ class Course extends Component {
   }
 
   render() {
+    console.log("data", this.props.TrainEachCampus);
     return (
       <div>
         <CourseComponent
@@ -69,6 +90,8 @@ const mapStateToProps = state => (
   {
     Campus: state.DashBoardCoursesReducers,
     Faculty: state.FacuntyCoursesReducers,
+    TrainAllCampus: state.FindCourseAllCampusGraph.data,
+    TrainEachCampus: state.FindCourseEachCampusGraph.data
   }
 );
 

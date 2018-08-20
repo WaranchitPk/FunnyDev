@@ -8,6 +8,7 @@ import RestoreIcon from "@material-ui/icons/Restore";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import ChartViewYearAndMonth from "./Chart/ChartUserViewDays";
 import Loadable from "react-loadable";
+import ChartSumUserUse from "./Chart/Chart_train_sum/ChartSumUseUse";
 
 const ChartViewYear = Loadable({
   loader: () => import("./Chart/ChartUserViewMonth"),
@@ -41,18 +42,22 @@ const UserUse = ({
           value={valueBtNavigate}
           onChange={changeBtNavigate}
           showLabels>
+          <BottomNavigationAction label="รวม" icon={<RestoreIcon/>}/>
           <BottomNavigationAction label="แสดงรายเดือน" icon={<RestoreIcon/>}/>
           <BottomNavigationAction label="แสดงรายวัน" icon={<FavoriteIcon/>}/>
         </BottomNavigation>
       </Grid>
     </Grid>
-    {valueBtNavigate === 0 && <ChartViewYear
+    {valueBtNavigate === 0 && (
+      <ChartSumUserUse/>
+    )}
+    {valueBtNavigate === 1 && <ChartViewYear
       year={year}
       dataChartMonth={dataMonthChart}
       valueYear={valueYear}
       selectYear={selectYear}
       submitSelectYear={submitSelectYear}/>}
-    {valueBtNavigate === 1 && <ChartViewYearAndMonth
+    {valueBtNavigate === 2 && <ChartViewYearAndMonth
       year={year}
       valueYear={valueYear}
       month={month}

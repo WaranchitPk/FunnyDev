@@ -2,7 +2,9 @@ export {
   MainCourse,
   StatFaculty,
   dashBoardCoursesCampus,
-  facultyCourse
+  facultyCourse,
+  findGraphtrain,
+  findEachGraph
 } from './Courses';
 export { chiangmai } from './Orhter';
 export { y2018Action } from './Users';
@@ -14,5 +16,6 @@ export {
   UserViewFindMonthData,
   UserViewFindDayData,
   UserUseFindMonthData,
-  UserUseFindDayData
+  UserUseFindDayData,
+  UserViewFindSumYear
 } from './Users';

@@ -1,10 +1,22 @@
 import React from 'react';
 import {
+  CircularProgress,
   Grid,
   Paper,
-} from '@material-ui/core';
+  Typography
+} from "@material-ui/core";
 import Loadable from 'react-loadable';
 import '../../../styles/course.css';
+import {
+  Bar,
+  CartesianGrid,
+  ComposedChart,
+  Legend,
+  Line,
+  Tooltip,
+  XAxis,
+  YAxis
+} from "recharts";
 
 const TitleCampus = Loadable({
   loader: () => import('./Title_CourseCampus/TitleCourse'),
@@ -20,11 +32,11 @@ const ResultText = Loadable({
 });
 
 const nameCampus = 'ส่วนกลาง(เชียงใหม่)';
-const CampusChiangmai = ({ data }) => (
+const CampusChiangmai = ({ data,dataTrainCM }) => (
   <div>
     <Grid container justify="center" className='mainChart'>
       <Grid
-        item sm={6}
+        item sm={11}
         xs={12}>
         <Paper
           elevation={5}>
@@ -33,6 +45,25 @@ const CampusChiangmai = ({ data }) => (
         </Paper>
       </Grid>
     </Grid>
+    {
+      dataTrainCM !== null && dataTrainCM !== undefined ? (
+        <Paper elevation={5} >
+          <Typography align="center" variant="title">จำนวนรายวิชาของทุกเขตพื้นที่</Typography>
+          <ComposedChart width={600} height={400} data={dataTrainCM.data.result}
+                         margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
+            <CartesianGrid stroke='#f5f5f5'/>
+            <XAxis dataKey="date"/>
+            <YAxis/>
+            <Tooltip/>
+            <Legend/>
+            <Bar dataKey='countCourse' barSize={20} fill='#80DEEA'/>
+            <Line type='monotone' dataKey='countCourse' stroke='#F44336'/>
+          </ComposedChart>
+        </Paper>
+      ) : (
+        <CircularProgress size={25}/>
+      )
+    }
     <div className='paperShowResult'>
       <ResultText
         dataT={data}
