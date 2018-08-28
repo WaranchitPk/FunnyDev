@@ -61,12 +61,6 @@ const Course = ({
     {valueTabs === 0 && <MainAllCampus
       dataT={dataT}
       dataTrainAll={TrainAllCampus}/>}
-    dataTrainCR
-    dataTrainTK
-    dataTrainNN
-    dataTrainPL
-    dataTrainCM
-    dataTrainLP
     {valueTabs === 1 && <CourseChiangRaiCampus
       data={dataFaculty.data.resultFaculty.ChiangRai}
       dataTrainCR={TrainEachCampus}/>}

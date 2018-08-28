@@ -134,7 +134,6 @@ class User extends Component {
 
   render() {
     const { UserViewdataMonth, valueYear, valueMonth, UserViewdataDay, UserUsedataMonth, UserUsedataDay, sumYearUse } = this.props;
-
     return (
       <div>
         <UserComponent

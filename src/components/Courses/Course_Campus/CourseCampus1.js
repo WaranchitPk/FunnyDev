@@ -18,6 +18,11 @@ import {
   YAxis
 } from "recharts";
 
+const styles = {
+  root: {
+    marginTop: '2%'
+  }
+}
 const TitleCampus = Loadable({
   loader: () => import('./Title_CourseCampus/TitleCourse'),
   loading: () => null,
@@ -44,12 +49,11 @@ const CampusChiangrai = ({ data,dataTrainCR }) => (
       </Grid>
     </Grid>
     <Grid container justify="center">
-      <Grid item xs={12} sm={7}>
         {
           dataTrainCR !== null && dataTrainCR !== undefined ? (
-            <Paper elevation={5} >
-              <Typography align="center" variant="title">จำนวนรายวิชาของทุกเขตพื้นที่</Typography>
-              <ComposedChart width={600} height={400} data={dataTrainCR.data.result}
+            <Paper elevation={5} style={styles.root}>
+              <Typography align="center" variant="title">อัตราการเติบโตของจำนวนรายวิชาในเขตพื้นที่เชียงราย</Typography>
+              <ComposedChart width={800} height={600} data={dataTrainCR.data.result}
                              margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
                 <CartesianGrid stroke='#f5f5f5'/>
                 <XAxis dataKey="date"/>
@@ -64,7 +68,6 @@ const CampusChiangrai = ({ data,dataTrainCR }) => (
             <CircularProgress size={25}/>
           )
         }
-      </Grid>
     </Grid>
     <div className='paperShowResult'>
       <ResultText

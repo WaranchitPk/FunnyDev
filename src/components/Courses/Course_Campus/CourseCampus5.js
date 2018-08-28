@@ -30,7 +30,11 @@ const ResultText = Loadable({
   loader: () => import('./ShowResultText/resultText'),
   loading: () => null,
 });
-
+const styles = {
+  root: {
+    marginTop: "2%"
+  }
+};
 const nameCampus = 'ส่วนกลาง(เชียงใหม่)';
 const CampusChiangmai = ({ data,dataTrainCM }) => (
   <div>
@@ -45,25 +49,27 @@ const CampusChiangmai = ({ data,dataTrainCM }) => (
         </Paper>
       </Grid>
     </Grid>
-    {
-      dataTrainCM !== null && dataTrainCM !== undefined ? (
-        <Paper elevation={5} >
-          <Typography align="center" variant="title">จำนวนรายวิชาของทุกเขตพื้นที่</Typography>
-          <ComposedChart width={600} height={400} data={dataTrainCM.data.result}
-                         margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
-            <CartesianGrid stroke='#f5f5f5'/>
-            <XAxis dataKey="date"/>
-            <YAxis/>
-            <Tooltip/>
-            <Legend/>
-            <Bar dataKey='countCourse' barSize={20} fill='#80DEEA'/>
-            <Line type='monotone' dataKey='countCourse' stroke='#F44336'/>
-          </ComposedChart>
-        </Paper>
-      ) : (
-        <CircularProgress size={25}/>
-      )
-    }
+    <Grid container justify="center">
+      {
+        dataTrainCM !== null && dataTrainCM !== undefined ? (
+          <Paper elevation={5} style={styles.root}>
+            <Typography align="center" variant="title">อัตราการเติบโตของจำนวนรายวิชาในเขตพื้นที่เชียงใหม่</Typography>
+            <ComposedChart width={800} height={600} data={dataTrainCM.data.result}
+            >
+              <CartesianGrid stroke='#f5f5f5'/>
+              <XAxis dataKey="date"/>
+              <YAxis/>
+              <Tooltip/>
+              <Legend/>
+              <Bar dataKey='countCourse' barSize={20} fill='#80DEEA'/>
+              <Line type='monotone' dataKey='countCourse' stroke='#F44336'/>
+            </ComposedChart>
+          </Paper>
+        ) : (
+          <CircularProgress size={25}/>
+        )
+      }
+    </Grid>
     <div className='paperShowResult'>
       <ResultText
         dataT={data}

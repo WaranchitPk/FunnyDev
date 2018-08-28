@@ -17,7 +17,11 @@ import {
   XAxis,
   YAxis
 } from "recharts";
-
+const styles = {
+  root: {
+    marginTop: "2%"
+  }
+};
 const TitleCampus = Loadable({
   loader: () => import('./Title_CourseCampus/TitleCourse'),
   loading: () => null,
@@ -45,25 +49,27 @@ const CampusTak = ({ data,dataTrainTK }) => (
         </Paper>
       </Grid>
     </Grid>
-    {
-      dataTrainTK !== null && dataTrainTK !== undefined ? (
-        <Paper elevation={5} >
-          <Typography align="center" variant="title">จำนวนรายวิชาของทุกเขตพื้นที่</Typography>
-          <ComposedChart width={600} height={400} data={dataTrainTK.data.result}
-                         margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
-            <CartesianGrid stroke='#f5f5f5'/>
-            <XAxis dataKey="date"/>
-            <YAxis/>
-            <Tooltip/>
-            <Legend/>
-            <Bar dataKey='countCourse' barSize={20} fill='#80DEEA'/>
-            <Line type='monotone' dataKey='countCourse' stroke='#F44336'/>
-          </ComposedChart>
-        </Paper>
-      ) : (
-        <CircularProgress size={25}/>
-      )
-    }
+    <Grid container justify="center">
+      {
+        dataTrainTK !== null && dataTrainTK !== undefined ? (
+          <Paper elevation={5} style={styles.root}>
+            <Typography align="center" variant="title">อัตราการเติบโตของจำนวนรายวิชาในเขตพื้นที่ตาก</Typography>
+            <ComposedChart width={800} height={400} data={dataTrainTK.data.result}
+                           margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
+              <CartesianGrid stroke='#f5f5f5'/>
+              <XAxis dataKey="date"/>
+              <YAxis/>
+              <Tooltip/>
+              <Legend/>
+              <Bar dataKey='countCourse' barSize={20} fill='#80DEEA'/>
+              <Line type='monotone' dataKey='countCourse' stroke='#F44336'/>
+            </ComposedChart>
+          </Paper>
+        ) : (
+          <CircularProgress size={25}/>
+        )
+      }
+    </Grid>
     <div className='paperShowResult'>
       <ResultText
         dataT={data}

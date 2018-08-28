@@ -75,8 +75,8 @@ const MainCourse = ({ dataT, dataTrainAll }) => (
         {
           dataTrainAll !== null && dataTrainAll !== undefined ? (
             <Paper elevation={5} style={styles.Paper}>
-              <Typography align="center" variant="title">จำนวนรายวิชาของทุกเขตพื้นที่</Typography>
-              <ComposedChart width={600} height={400} data={dataTrainAll.data.result}
+              <Typography align="center" variant="title">อัตราการเติบโตของจำนวนรายวิชาในทุกเขตพื้นที่</Typography>
+              <ComposedChart width={800} height={600} data={dataTrainAll.data.result}
                              margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
                 <CartesianGrid stroke='#f5f5f5'/>
                 <XAxis dataKey="yearShow"/>

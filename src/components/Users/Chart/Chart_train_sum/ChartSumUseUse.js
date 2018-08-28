@@ -15,7 +15,8 @@ import {
 import {
   Paper,
   Grid,
-  CircularProgress
+  CircularProgress,
+  Typography
 } from "@material-ui/core";
 
 const arrShowDataTest = [
@@ -66,6 +67,8 @@ const ShowTrainUser = () => (
     {
       arrShowDataTest !== null && arrShowDataTest !== undefined ? (
         <Paper elevation={5} style={styles.root}>
+          <Typography align="center" variant="title">อัตราการเติบโตของจำนวนผู้เข้าใช้</Typography>
+
           <ComposedChart width={800} height={600} data={arrShowDataTest}
                          margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
             <CartesianGrid stroke='#f5f5f5'/>
