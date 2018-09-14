@@ -76,8 +76,8 @@ const ShowTrainUser = () => (
             <YAxis/>
             <Tooltip/>
             <Legend/>
-            <Bar dataKey='CountYear' barSize={20} fill='#80DEEA'/>
-            <Line type='monotone' dataKey='CountYear' stroke='#F44336'/>
+            <Bar dataKey='CountYear' barSize={20} fill='#80DEEA' name="จำนวนผู้เข้าใช้ระบบ"/>
+            <Line type='monotone' dataKey='CountYear' stroke='#F44336' name="อัตราการเติบโตของผู้เข้าใช้ระบบ"/>
           </ComposedChart>
         </Paper>
       ) : (

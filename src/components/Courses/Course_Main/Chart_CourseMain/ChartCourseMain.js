@@ -13,7 +13,7 @@ import {
 
 const colorsBar = ["#B91D21", "#4055B2", "#3A9619", "#203A0B", "#503307", "#7D0F7F"];
 const ChartCourseMain = ({ dataT }) => {
-  console.log(dataT)
+  console.log(dataT);
   return (
     <div>
       {
@@ -29,7 +29,8 @@ const ChartCourseMain = ({ dataT }) => {
               <Legend/>
               <Bar
                 dataKey="value"
-                fill="#F08080">
+                fill="#F08080"
+                name="จำนวนรายวิชา">
                 {
                   dataT.data.resultData.map((entry, index) => (
                     <Cell

@@ -14,6 +14,7 @@ const UserViewDays = ({ dataChartDay }) => {
   let showData = "";
   let dataKeyXAxis = "";
   let dataBar = "";
+  console.log("user view day", dataChartDay);
   if (dataChartDay !== undefined && dataChartDay !== null) {
     showData = dataChartDay.data.result;
     dataKeyXAxis = "day";
@@ -29,7 +30,7 @@ const UserViewDays = ({ dataChartDay }) => {
           <YAxis/>
           <Tooltip/>
           <Legend/>
-          <Bar dataKey={dataBar} fill='#82ca9d'/>
+          <Bar dataKey={dataBar} fill='#82ca9d' name="จำนวน"/>
         </BarChart>
       </ResponsiveContainer>
     </div>

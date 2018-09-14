@@ -38,7 +38,7 @@ const UserViewMonths = ({ dataChartMonth }) => {
         <YAxis/>
         <Tooltip/>
         <Legend/>
-        <Bar dataKey="countMonth" fill='#82ca9d'/>
+        <Bar dataKey="countMonth" fill='#82ca9d' name="จำนวน"/>
       </BarChart>
     </ResponsiveContainer>
 

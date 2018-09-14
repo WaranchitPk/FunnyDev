@@ -82,7 +82,7 @@ const Home = ({
         <ListItem>
           <ListItemText>
             <Typography variant="display1">
-              Compare Between Sum Course Per Year And Sum User Use
+              Compare Between Total Course And Total User Access Per Year
             </Typography>
           </ListItemText>
         </ListItem>
@@ -105,8 +105,8 @@ const Home = ({
                 <YAxis/>
                 <Tooltip/>
                 <Legend />
-                <Bar dataKey="countUserUse" fill="#8884d8" />
-                <Bar dataKey="countCourse" fill="#82ca9d" />
+                <Bar dataKey="countUserUse" fill="#8884d8" name="จำนวนผู้ใช้"/>
+                <Bar dataKey="countCourse" fill="#82ca9d" name="จำนวนรายวิชา"/>
               </BarChart>
             </ResponsiveContainer>
             </Paper>

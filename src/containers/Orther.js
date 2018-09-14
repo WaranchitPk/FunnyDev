@@ -17,8 +17,7 @@ class OrtherStat extends Component {
   componentDidMount() {
     // this.props.dispatch(chiangmai(this.state.type, this.state.rating));
     const data = {
-      limit: this.state.rating,
-      campus: this.state.type,
+      limit: this.state.rating
     };
     this.props.dispatch(find(data));
   }
@@ -26,11 +25,10 @@ class OrtherStat extends Component {
   ChangeCampus = () => {
     // console.log(this.state.type,this.state.rating)
     const data = {
-      limit: this.state.rating,
-      campus: this.state.type,
+      limit: this.state.rating
     };
     this.props.dispatch(find(data));
-    this.props.dispatch(chiangmai(this.state.type, this.state.rating));
+    // this.props.dispatch(chiangmai(this.state.type, this.state.rating));
   };
 
   handleSelect = (event) => {
@@ -47,6 +45,7 @@ class OrtherStat extends Component {
 
   render() {
     const { cmData: { dataCourse } } = this.props;
+    console.log('aaa',this.props.resultFind)
     return (
       <div>
         <OrtherStatComponent

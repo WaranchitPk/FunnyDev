@@ -22,7 +22,8 @@ const ChartCourseCampus = ({data}) => (
       <Legend/>
       <Bar
         dataKey="value"
-        fill="#8884d8"/>
+        fill="#8884d8"
+        name="จำนวนรายวิชา"/>
     </BarChart>
   </ResponsiveContainer>
 );

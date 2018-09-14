@@ -4,10 +4,9 @@ import {api} from '../config';
 import { chiangmaiData_Top10,chiangmaiData_Top50,chiangmaiData_Top100, pitsanulok_Top10,pitsanulok_Top50,pitsanulok_Top100} from "../mockData/Orther";
 
 
-export const find = ({limit,campus}) =>{
+export const find = ({limit}) =>{
   return dispatch =>{
-  console.log(limit,campus);
-    return axios.get(`${api}/orther?limit=${limit}&campus=${campus}`)
+    return axios.get(`${api}/orther?limit=${limit}`)
       .then((result)=>{
         dispatch({
           type: loadOrtherStat,

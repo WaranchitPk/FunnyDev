@@ -2,13 +2,13 @@ import React from "react";
 import {Select,MenuItem} from '@material-ui/core';
 const SelectMenu = ({type,onSelect,rating}) => (
   <div>
-    Campus : <Select
-    value={type}
-    onChange={onSelect}
-    inputProps={{ name: "type" }}>
-    <MenuItem value={6}>Chiangmai</MenuItem>
-    <MenuItem value={2}>Pitsanulok</MenuItem>
-  </Select>
+    {/*Campus : <Select*/}
+    {/*value={type}*/}
+    {/*onChange={onSelect}*/}
+    {/*inputProps={{ name: "type" }}>*/}
+    {/*<MenuItem value={6}>Chiangmai</MenuItem>*/}
+    {/*<MenuItem value={2}>Pitsanulok</MenuItem>*/}
+  {/*</Select>*/}
     Rating : <Select
     value={rating}
     onChange={onSelect}

@@ -13,6 +13,8 @@ import {
   UserUseFindDayData,
   UserViewFindSumYear
 } from "../actions";
+import axios from "axios";
+import { api } from "../config";
 
 
 class User extends Component {
@@ -102,8 +104,9 @@ class User extends Component {
     } else if (value === 1) {
       // this.props.dispatch(UserViewFindMonthData(year));
       // this.props.dispatch(FindValueYear());
-    } else if (value === 1) {
+    } else if (value === 2) {
       this.props.dispatch(findValueMonth(year));
+      axios.get(`${api}/users/userview/findMonth/${year}/${month}`)
       this.props.dispatch(UserViewFindDayData(year, month));
       // this.props.dispatch(FindValueYear());
     }
@@ -115,6 +118,9 @@ class User extends Component {
       valueBtNavigateUserView: ""
     });
     if (value === 0) {
+      // this.props.dispatch(UserViewFindMonthData(year));
+      // this.props.dispatch(FindValueYear());
+    }  else if (value === 1) {
       // this.props.dispatch(UserViewFindMonthData(year));
       // this.props.dispatch(FindValueYear());
     } else if (value === 2) {
@@ -134,6 +140,7 @@ class User extends Component {
 
   render() {
     const { UserViewdataMonth, valueYear, valueMonth, UserViewdataDay, UserUsedataMonth, UserUsedataDay, sumYearUse } = this.props;
+    console.log("UserViewdataDay", UserViewdataDay);
     return (
       <div>
         <UserComponent
