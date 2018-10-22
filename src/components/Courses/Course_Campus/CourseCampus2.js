@@ -40,13 +40,13 @@ const CampusTak = ({data, dataTrainTK}) => (
         <Divider/>
         <Grid container justify="center" className='mainChart' id="homeCourse">
             <Grid
-                item sm={8}
+                item sm={9}
                 xs={12}>
-                <Paper
-                    elevation={5}>
+                {/*<Paper*/}
+                    {/*elevation={5}>*/}
                     <TitleCampus name={nameCampus}/>
                     <ChartCampus data={data}/>
-                </Paper>
+                {/*</Paper>*/}
             </Grid>
         </Grid>
         <Divider/>
@@ -61,7 +61,7 @@ const CampusTak = ({data, dataTrainTK}) => (
         <Grid container justify="center" id="homeCourse">
             {
                 dataTrainTK !== null && dataTrainTK !== undefined ? (
-                    <Paper elevation={5} style={styles.root}>
+                    <div style={styles.root}>
                         <Typography align="center"
                                     variant="title">อัตราการเติบโตของจำนวนรายวิชาในเขตพื้นที่ตาก</Typography>
                         <ComposedChart width={800} height={400} data={dataTrainTK.data.result}
@@ -75,7 +75,7 @@ const CampusTak = ({data, dataTrainTK}) => (
                             <Line type='monotone' dataKey='countCourse' stroke='#F44336'
                                   name="จำนวนการเจริญเติบโตของรายวิชา"/>
                         </ComposedChart>
-                    </Paper>
+                    </div>
                 ) : (
                     <CircularProgress size={50}/>
                 )

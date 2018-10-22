@@ -40,7 +40,6 @@ const styles = {
 const nameCampus = 'เชียงราย';
 const CampusChiangrai = ({data, dataTrainCR}) => (
     <div>
-        <h2>asfasfasf</h2>
         <ListItem>
             <ListItemText>
                 <Typography variant="display1">
@@ -51,7 +50,7 @@ const CampusChiangrai = ({data, dataTrainCR}) => (
         <Divider/>
         <Grid container justify="center" className='mainChart' id="homeCourse">
             <Grid
-                item sm={8}
+                item sm={9}
                 xs={12}>
                 {/*<Paper elevation={5}>*/}
                     <TitleCampus name={nameCampus}/>
@@ -71,7 +70,7 @@ const CampusChiangrai = ({data, dataTrainCR}) => (
         <Grid container justify="center" id="homeCourse">
             {
                 dataTrainCR !== null && dataTrainCR !== undefined ? (
-                    <Paper elevation={5} style={styles.root}>
+                    <div style={styles.root}>
                         <Typography align="center"
                                     variant="title">อัตราการเติบโตของจำนวนรายวิชาในเขตพื้นที่เชียงราย</Typography>
                         <ComposedChart width={800} height={600} data={dataTrainCR.data.result}
@@ -85,7 +84,7 @@ const CampusChiangrai = ({data, dataTrainCR}) => (
                             <Line type='monotone' dataKey='countCourse' stroke='#F44336'
                                   name="จำนวนการเจริญเติบโตของรายวิชา"/>
                         </ComposedChart>
-                    </Paper>
+                    </div>
                 ) : (
                     <CircularProgress size={50}/>
                 )

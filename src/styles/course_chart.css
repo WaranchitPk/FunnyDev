@@ -1,4 +1,4 @@
-/*.recharts-cartesian-axis-tick {*/
-    /*font-size: 2rem;*/
-    /*font-family: Roboto, sans-serif;*/
-/*}*/
+.recharts-tooltip-wrapper {
+    background-color: aliceblue;
+    word-wrap: break-word;
+}

@@ -39,13 +39,10 @@ const CampusNan = ({data, dataTrainNN}) => (
         <Divider/>
         <Grid container justify="center" className='mainChart' id="homeCourse">
             <Grid
-                item sm={8}
+                item sm={9}
                 xs={12}>
-                <Paper
-                    elevation={5}>
-                    <TitleCampus name={nameCampus}/>
-                    <ChartCampus data={data}/>
-                </Paper>
+                <TitleCampus name={nameCampus}/>
+                <ChartCampus data={data}/>
             </Grid>
         </Grid>
         <Divider/>
@@ -60,7 +57,7 @@ const CampusNan = ({data, dataTrainNN}) => (
         <Grid container justify="center" id="homeCourse">
             {
                 dataTrainNN !== null && dataTrainNN !== undefined ? (
-                    <Paper elevation={5} style={styles.root}>
+                    <div style={styles.root}>
                         <Typography align="center"
                                     variant="title">อัตราการเติบโตของจำนวนรายวิชาในเขตพื้นที่น่าน</Typography>
                         <ComposedChart width={600} height={400} data={dataTrainNN.data.result}
@@ -74,7 +71,7 @@ const CampusNan = ({data, dataTrainNN}) => (
                             <Line type='monotone' dataKey='countCourse' stroke='#F44336'
                                   name="จำนวนการเจริญเติบโตของรายวิชา"/>
                         </ComposedChart>
-                    </Paper>
+                    </div>
                 ) : (
                     <CircularProgress size={50}/>
                 )

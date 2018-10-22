@@ -11,16 +11,17 @@ import {
 } from 'recharts';
 import '../../../../styles/course_chart.css'
 
+
 const ChartCourseCampus = ({data}) => {
-    console.log(data)
+
     return (
-        <div>
+        <div >
             <ResponsiveContainer
                 width="100%"
-                aspect={2}>
+                aspect={3}>
                 <BarChart data={data}>
                     <CartesianGrid strokeDasharray="3 3"/>
-                    <XAxis dataKey="name"/>
+                    <XAxis dataKey="name" />
                     <YAxis/>
                     <Tooltip/>
                     <Legend/>
@@ -31,6 +32,7 @@ const ChartCourseCampus = ({data}) => {
 
                 </BarChart>
             </ResponsiveContainer>
+
         </div>
     )
 }

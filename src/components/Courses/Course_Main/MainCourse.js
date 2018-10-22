@@ -73,11 +73,9 @@ const MainCourse = ({dataT, dataTrainAll}) => (
         <Divider/>
         <Grid container className='mainChart' justify="center" id="homeCourse">
             <Grid item sm={7} xs={12}>
-                <Paper elevation={5}>
-                    <TitleCampus/>
-                    <ChartCampus
-                        dataT={dataT}/>
-                </Paper>
+                <TitleCampus/>
+                <ChartCampus
+                    dataT={dataT}/>
             </Grid>
         </Grid>
         <Divider/>
@@ -95,7 +93,7 @@ const MainCourse = ({dataT, dataTrainAll}) => (
             <Grid item xs={12} sm={5}>
                 {
                     dataTrainAll !== null && dataTrainAll !== undefined ? (
-                        <Paper elevation={5} style={styles.Paper}>
+                        <div style={styles.Paper}>
                             <Typography align="center"
                                         variant="title">อัตราการเติบโตของจำนวนรายวิชาในทุกเขตพื้นที่</Typography>
                             <ResponsiveContainer
@@ -112,7 +110,7 @@ const MainCourse = ({dataT, dataTrainAll}) => (
                                           name="จำนวนการเจริญเติบโตของรายวิชา"/>
                                 </ComposedChart>
                             </ResponsiveContainer>
-                        </Paper>
+                        </div>
                     ) : (
                         <CircularProgress size={50}/>
                     )
