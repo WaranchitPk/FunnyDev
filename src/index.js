@@ -10,6 +10,7 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import promiseMiddleware from 'redux-promise-middleware';
 import reducer from './reducers/rootReducers';
+import './index.css';
 
 const store = createStore(reducer,
   applyMiddleware(thunk, promiseMiddleware()));

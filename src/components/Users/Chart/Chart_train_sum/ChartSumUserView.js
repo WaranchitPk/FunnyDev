@@ -64,9 +64,8 @@ const yearSelect = [2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 
 const ShowTrainUser = ({ resultSumYear }) => {
   let result = [];
   if (resultSumYear !== null && resultSumYear !== undefined) {
-    result = result.concat(arrShowDataTest, resultSumYear.data.result);
+    result = resultSumYear.data.result
   }
-
   return (
     <Grid container justify="center">
       {

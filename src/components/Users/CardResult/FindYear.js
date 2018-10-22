@@ -17,7 +17,7 @@ const sumValueSubject = (value) => {
 const ShowResultSubject = ({ value }) => (
   <div>
     <Typography variant='title'>
-      จำนวนผู้เข้าชมระบบทั้งหมด : {sumValueSubject(value)}
+      จำนวนผู้เข้าชมระบบทั้งหมด : {sumValueSubject(value).toLocaleString()}
     </Typography>
   </div>
 );
@@ -45,7 +45,7 @@ const ResultYear = ({ year, dataMonthChart }) => (
           dataMonthChart && dataMonthChart.data.result.map(value => (
             <ListItem>
               <Typography key={value.month} variant='body2'>
-                {value.month} : {value.countMonth}
+                <b>{value.month}</b> : {value.countMonth.toLocaleString()} คน
               </Typography>
             </ListItem>
           ))

@@ -41,7 +41,7 @@ const ResultSubject = ({dataT, nameCampus}) => (
             dataT && dataT.map((result) => (
               <ListItem>
                 <Typography key={result.name} variant="body2">
-                  {result.name} : {result.value}
+                  <b>{result.name}</b> : {result.value} วิชา
                 </Typography>
               </ListItem>
             ))

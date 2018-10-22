@@ -1,9 +1,9 @@
 import React from 'react';
 import {
-  CircularProgress,
-  Grid,
-  Paper,
-  Typography
+    CircularProgress, Divider,
+    Grid, ListItem, ListItemText,
+    Paper,
+    Typography
 } from "@material-ui/core";
 import Loadable from 'react-loadable';
 import '../../../styles/course.css';
@@ -18,18 +18,9 @@ import {
   YAxis
 } from "recharts";
 
-const TitleCampus = Loadable({
-  loader: () => import('./Title_CourseCampus/TitleCourse'),
-  loading: () => null,
-});
-const ChartCampus = Loadable({
-  loader: () => import('./Chart_CourseCampus/ChartCourseCampus'),
-  loading: () => null,
-});
-const ResultText = Loadable({
-  loader: () => import('./ShowResultText/resultText'),
-  loading: () => null,
-});
+import TitleCampus from './Title_CourseCampus/TitleCourse';
+import ChartCampus from './Chart_CourseCampus/ChartCourseCampus';
+import ResultText from './ShowResultText/resultText';
 const styles = {
   root: {
     marginTop: "2%"
@@ -38,7 +29,15 @@ const styles = {
 const nameCampus = 'ส่วนกลาง(เชียงใหม่)';
 const CampusChiangmai = ({ data,dataTrainCM }) => (
   <div>
-    <Grid container justify="center" className='mainChart'>
+      <ListItem>
+          <ListItemText>
+              <Typography variant="display1">
+                  จำนวนรายวิชาทั้งหมด ของเขตพื้นที่ {nameCampus}
+              </Typography>
+          </ListItemText>
+      </ListItem>
+      <Divider/>
+    <Grid container justify="center" className='mainChart' id="homeCourse">
       <Grid
         item sm={11}
         xs={12}>
@@ -49,7 +48,16 @@ const CampusChiangmai = ({ data,dataTrainCM }) => (
         </Paper>
       </Grid>
     </Grid>
-    <Grid container justify="center">
+      <Divider/>
+      <ListItem>
+          <ListItemText>
+              <Typography variant="display1">
+                  อัตราการเติบโตของจำนวนรายวิชาทั้งหมดในแต่ละปีของเขตพื้นที่ {nameCampus}
+              </Typography>
+          </ListItemText>
+      </ListItem>
+      <Divider/>
+    <Grid container justify="center" id="homeCourse">
       {
         dataTrainCM !== null && dataTrainCM !== undefined ? (
           <Paper elevation={5} style={styles.root}>
@@ -66,11 +74,20 @@ const CampusChiangmai = ({ data,dataTrainCM }) => (
             </ComposedChart>
           </Paper>
         ) : (
-          <CircularProgress size={25}/>
+          <CircularProgress size={50}/>
         )
       }
     </Grid>
-    <div className='paperShowResult'>
+      <Divider/>
+      <ListItem>
+          <ListItemText>
+              <Typography variant="display1">
+                  สรุปจำนวนรายวิชาทั้งหมดของเขตพื้นที่ {nameCampus}
+              </Typography>
+          </ListItemText>
+      </ListItem>
+      <Divider/>
+    <div className='paperShowResult' id="homeCourse">
       <ResultText
         dataT={data}
         nameCampus={nameCampus}/>

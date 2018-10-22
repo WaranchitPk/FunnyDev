@@ -18,7 +18,50 @@ const UserViewMonths = ({ dataChartMonth }) => {
   // let dataBar = "";
   if (dataChartMonth !== undefined && dataChartMonth !== null) {
     console.log("UserViewdataMonth", dataChartMonth.data.result);
-    showData = dataChartMonth.data.result;
+      dataChartMonth.data.result.map(result =>{
+          if (result.month === 1) {
+              result.month = "ม.ค"
+          }
+          if (result.month === 2) {
+
+              result.month = "ก.พ"
+          }
+          if (result.month === 3) {
+              result.month = "มี.ค"
+          }
+          if (result.month === 4) {
+              result.month = "เม.ย"
+          }
+          if (result.month === 5) {
+              result.month = "พ.ค"
+          }
+          if (result.month === 6) {
+              result.month = "มิ.ย"
+          }
+          if (result.month === 6) {
+              result.month = "มิ.ย"
+          }
+          if (result.month === 7) {
+
+              result.month = "ก.ค"
+          }
+          if (result.month === 8) {
+              result.month = "ส.ค"
+          }
+          if (result.month === 9) {
+              result.month = "ก.ย"
+          }
+          if (result.month === 10) {
+              result.month = "ต.ค"
+          }
+          if (result.month === 11) {
+              result.month = "พ.ย"
+          }
+          if (result.month === 12) {
+              result.month = "ธ.ค"
+          }
+          showData = dataChartMonth.data.result
+      })
     // dataKeyXAxis = "month";
     // dataBar = "countMonth";
     //  {countMonth: 73760, month: 1}

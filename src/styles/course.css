@@ -1,6 +1,6 @@
 /*main chart*/
 .mainChart {
-    margin-top: 5%;
+    margin-top: 2%;
 }
 .paperShowResult{
     margin-top: 3%;
@@ -10,6 +10,7 @@
 }
 .iconStyle{
     width: 50px;
+    padding-right: 10px;
 }
 .centeredProgress {
     position: fixed;
@@ -17,4 +18,7 @@
     left: 50%;
     /* bring your own prefixes */
     transform: translate(-50%, -50%);
+}
+#homeCourse {
+    margin-bottom: 2%;
 }
