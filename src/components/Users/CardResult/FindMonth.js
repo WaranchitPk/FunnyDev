@@ -14,21 +14,39 @@ const ShowResultFindMonth = ({ dataChartDay, rowsPerPage, page, onChangePage, on
   // if (dataChartDay !== undefined && dataChartDay !== null) {
   //   data = dataChartDay.data.result;
   // }
+    const styles = {
+        fontTableCell: {
+            fontSize: '1.25rem',
+            textAlign: 'center',
+            color: 'black',
+            opacity: 0.85
+        },
+        AlignTableCellText: {
+            textAlign: 'left',
+            fontSize: '1rem',
+            opacity: 0.80
+        },
+        AlignTableCellNumber: {
+            textAlign: 'right',
+            fontSize: '1rem',
+            opacity: 0.80
+        }
+    }
   return (
     <div>
       <Paper elevation={5}>
         <Table>
           <TableHead>
-            <TableCell>วันที่</TableCell>
-            <TableCell>จำนวน/ครั้ง</TableCell>
+            <TableCell style={styles.fontTableCell}>วันที่</TableCell>
+            <TableCell style={styles.fontTableCell}>จำนวน/ครั้ง</TableCell>
           </TableHead>
           <TableBody>
             {
               dataChartDay && dataChartDay.data.result.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map(result => (
                   <TableRow key={result.day}>
-                    <TableCell>{result.day}</TableCell>
-                    <TableCell>{result.countDay}</TableCell>
+                    <TableCell style={styles.AlignTableCellNumber}>{result.day}</TableCell>
+                    <TableCell style={styles.AlignTableCellNumber}>{result.countDay}</TableCell>
                   </TableRow>
                 ))}
           </TableBody>

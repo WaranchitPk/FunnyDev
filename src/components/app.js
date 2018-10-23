@@ -5,12 +5,13 @@ import {
   Route,
   Switch,
 } from 'react-router-dom';
+import Header from '../layout/Header';
 import Loadable from 'react-loadable';
 
-const Header = Loadable({
-  loader: () => import('../layout/Header'),
-  loading: () => null,
-});
+// const Header = Loadable({
+//   loader: () => import('../layout/Header'),
+//   loading: () => null,
+// });
 
 const Home = Loadable({
   loader: () => import('../containers/Home'),

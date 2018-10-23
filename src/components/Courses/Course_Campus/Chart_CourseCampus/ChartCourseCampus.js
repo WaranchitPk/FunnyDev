@@ -27,7 +27,7 @@ const ChartCourseCampus = ({data}) => {
                     <Legend/>
                     <Bar
                         dataKey="value"
-                        fill="#8884d8"
+                        fill="#85B8CB"
                         name="จำนวนรายวิชา"/>
 
                 </BarChart>

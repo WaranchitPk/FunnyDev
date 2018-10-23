@@ -96,7 +96,7 @@ const ShowTrainUser = ({resultSumYear}) => {
                         {/*</FormControl>*/}
                         {/*</CardContent>*/}
                         {/*</Card>*/}
-                        <Paper elevation={5} style={styles.root}>
+                        <div elevation={5} style={styles.root}>
                             <Typography align="center" variant="title">อัตราการเติบโตของจำนวนผู้เข้าชม</Typography>
 
                             <ComposedChart width={800} height={600} data={result}
@@ -106,11 +106,11 @@ const ShowTrainUser = ({resultSumYear}) => {
                                 <YAxis/>
                                 <Tooltip/>
                                 <Legend/>
-                                <Bar dataKey='CountYear' barSize={20} fill='#80DEEA' name="จำนวนผู้เข้าชมระบบ"/>
-                                <Line type='monotone' dataKey='CountYear' stroke='#F44336'
+                                <Bar dataKey='CountYear' barSize={20} fill='#85B8CB' name="จำนวนผู้เข้าชมระบบ"/>
+                                <Line type='monotone' dataKey='CountYear' stroke='#E81E25'
                                       name="อัตราการเติบโตของผู้เข้าชมระบบ"/>
                             </ComposedChart>
-                        </Paper>
+                        </div>
                     </div>
                 ) : (
                     <Typography align={"center"} style={styles.LoadingData}><CircularProgress size={100}/></Typography>

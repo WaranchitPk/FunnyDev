@@ -1,3 +1,14 @@
 .btYourChoose{
     margin-top: 2%;
 }
+
+#selectMonth{
+    width: 45px;
+}
+div.MuiSelect-select-266 MuiSelect-selectMenu-267 MuiInput-input-278{
+    width: 50px;
+}
+
+/*div.MuiSelect-select-911.MuiSelect-select-912.MuiInput-input-923 {*/
+    /*width: 45px;*/
+/*}*/

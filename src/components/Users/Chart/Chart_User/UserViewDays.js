@@ -30,7 +30,7 @@ const UserViewDays = ({ dataChartDay }) => {
           <YAxis/>
           <Tooltip/>
           <Legend/>
-          <Bar dataKey={dataBar} fill='#82ca9d' name="จำนวน"/>
+          <Bar dataKey={dataBar} fill='#85B8CB' name="จำนวน"/>
         </BarChart>
       </ResponsiveContainer>
     </div>

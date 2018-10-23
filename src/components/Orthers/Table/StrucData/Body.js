@@ -4,7 +4,18 @@ import {
   TableBody,
   TableRow
 } from "@material-ui/core";
-
+const styles = {
+    AlignTableCellText: {
+        textAlign: 'left',
+        fontSize: '1rem',
+        opacity: 0.80
+    },
+    AlignTableCellNumber: {
+        textAlign: 'right',
+        fontSize: '1rem',
+        opacity: 0.80
+    }
+}
 const NameCampus = ({
   path
 }) => {
@@ -47,10 +58,10 @@ const BodyTable = ({ dataCourse, page, rowsPerPage, data }) => (
         {/*<TableCell scope="row" component="th">*/}
         {/*{index}*/}
         {/*</TableCell>*/}
-        <TableCell>{n.fullname}</TableCell>
-        <TableCell>{n.name}</TableCell>
-        <NameCampus path={n.path.charAt(1)}/>
-        <TableCell>{n.course_count}</TableCell>
+        <TableCell style={styles.AlignTableCellText}>{n.fullname}</TableCell>
+        <TableCell style={styles.AlignTableCellText}>{n.name}</TableCell>
+        <NameCampus path={n.path.charAt(1)} style={styles.AlignTableCellText}/>
+        <TableCell style={styles.AlignTableCellNumber}>{n.course_count}</TableCell>
       </TableRow>
     ))}
   </TableBody>

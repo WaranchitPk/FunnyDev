@@ -13,6 +13,7 @@ import {
 import "../styles/user.css";
 import UserView from "./Users/UserView";
 import UserUse from "./Users/UserUse";
+import '../styles/public.css';
 import {UserComponent} from "./index";
 import RestoreIcon from "@material-ui/icons/Restore";
 import FavoriteIcon from "@material-ui/icons/Favorite";
@@ -61,14 +62,16 @@ const User = ({
                   yearAndMonth,
                   yearValueViewYear,
                   selectYearUserUse,
-                  yearValueUseYear
-
+                  yearValueUseYear,
+                  yearAndMonthUserUse,
+                  monthUse,
+                  selectYearAndMonthUserUse_Year,
+                  selectYearAndMonthUserUse_Month
               }) => {
-    console.log(yearValueUseYear, 'year')
     return (
         <div>
             <UserBanner/>
-            <AppBar position='static'>
+            <AppBar position='static' id="bgAppBar">
                 <Tabs
                     value={valueTabs}
                     onChange={changeTabs}
@@ -104,26 +107,31 @@ const User = ({
             }
             {
                 valueTabs === 1 && (<UserUse
-                    valueBtNavigate={valueBtNavigateUserUse}
-                    changeBtNavigate={changeBtNavigateUserUse}
-                    year={year}
-                    dataMonthChart={dataMonthChartUserUse}
-                    valueYear={valueYear}
-                    selectYear={selectYear}
-                    submitSelectYear={submitSelectYear}
-                    month={month}
-                    valueUserViewDaysMonth={valueUserViewDaysMonth}
-                    selectUserViewDaysYear={selectUserViewDaysYear}
-                    selectUserViewDaysMonth={selectUserViewDaysMonth}
-                    submitSelectUserViewDays={submitSelectUserViewDays}
-                    dataDayChart={dataDayChartUserUse}
-                    rowsPerPage={rowsPerPage}
-                    page={page}
-                    onChangePageTableInResultCardUserViewDays={onChangePageTableInResultCardUserViewDays}
-                    onChangeRowPerPageTableInResultCardUserViewDays={onChangeRowPerPageTableInResultCardUserViewDays}
-                    resultSumTrainUserUse={resultSumTrainUserUse}
-                    selectYearUserUse={selectYearUserUse}
-                    yearValueUseYear={yearValueUseYear}/>)
+                        valueBtNavigate={valueBtNavigateUserUse}
+                        changeBtNavigate={changeBtNavigateUserUse}
+                        year={year}
+                        dataMonthChart={dataMonthChartUserUse}
+                        valueYear={valueYear}
+                        selectYear={selectYear}
+                        submitSelectYear={submitSelectYear}
+                        month={month}
+                        valueUserViewDaysMonth={valueUserViewDaysMonth}
+                        selectUserViewDaysYear={selectUserViewDaysYear}
+                        selectUserViewDaysMonth={selectUserViewDaysMonth}
+                        submitSelectUserViewDays={submitSelectUserViewDays}
+                        dataDayChart={dataDayChartUserUse}
+                        rowsPerPage={rowsPerPage}
+                        page={page}
+                        onChangePageTableInResultCardUserViewDays={onChangePageTableInResultCardUserViewDays}
+                        onChangeRowPerPageTableInResultCardUserViewDays={onChangeRowPerPageTableInResultCardUserViewDays}
+                        resultSumTrainUserUse={resultSumTrainUserUse}
+                        selectYearUserUse={selectYearUserUse}
+                        yearValueUseYear={yearValueUseYear}
+                        yearAndMonthUserUse={yearAndMonthUserUse}
+                        monthUse={monthUse}
+                        selectYearAndMonth_Years={selectYearAndMonthUserUse_Year}
+                        selectYearAndMonth_Month={selectYearAndMonthUserUse_Month}/>
+                )
             }
 
         </div>

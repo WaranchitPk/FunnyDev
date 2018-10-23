@@ -39,7 +39,7 @@ const UserUse = ({
                                 </Grid>
                             </Grid>
                             <Grid container justify='center' className='paperShowResult'>
-                                <Grid item xs={12} sm={8}>
+                                <Grid item xs={12} sm={5}>
                                     <CardResultYear
                                         year={year}
                                         dataMonthChart={dataChartMonth}/>

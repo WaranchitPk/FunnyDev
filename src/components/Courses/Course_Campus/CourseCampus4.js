@@ -72,8 +72,9 @@ const CampusPitsanulok = ({data, dataTrainPL}) => (
                                 <YAxis/>
                                 <Tooltip/>
                                 <Legend/>
-                                <Bar dataKey='countCourse' barSize={20} fill='#80DEEA' name="จำนวนรายวิชา"/>
-                                <Line type='monotone' dataKey='countCourse' stroke='#F44336'
+
+                                <Bar dataKey='countCourse' barSize={20} fill='#85B8CB' name="จำนวนรายวิชา"/>
+                                <Line type='monotone' dataKey='countCourse' stroke='#E81E25'
                                       name="จำนวนการเจริญเติบโตของรายวิชา"/>
                             </ComposedChart>
                         </div>

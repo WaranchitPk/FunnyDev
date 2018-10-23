@@ -76,8 +76,8 @@ const ShowTrainUser = ({dataTrainResult}) => (
             <YAxis/>
             <Tooltip/>
             <Legend/>
-            <Bar dataKey='sumUser' barSize={20} fill='#80DEEA' name="จำนวนผู้เข้าใช้ระบบ"/>
-            <Line type='monotone' dataKey='sumUser' stroke='#F44336' name="อัตราการเติบโตของผู้เข้าใช้ระบบ"/>
+            <Bar dataKey='sumUser' barSize={20} fill='#85B8CB' name="จำนวนผู้เข้าใช้ระบบ"/>
+            <Line type='monotone' dataKey='sumUser' stroke='#E81E25' name="อัตราการเติบโตของผู้เข้าใช้ระบบ"/>
           </ComposedChart>
         </div>
       ) : (

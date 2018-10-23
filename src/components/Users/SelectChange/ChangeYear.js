@@ -10,20 +10,25 @@ import {
 
 const styles = {
     btSubmit: {
-        marginLeft: '10px'
+        marginLeft: '15px',
+        backgroundColor: '#1D6A96'
+    },
+    root: {
+        marginTop: '4%',
+        marginBottom: '1%'
     }
 }
 const ChangeYear = ({valueYear, year, selectYear, submitSelectYear,yearValueViewYear}) => {
     console.log('year', year);
     console.log('value ear', valueYear);
     return (
-        <div>
+        <div style={styles.root}>
             {
                 valueYear && (
                     <div>
 
                         <FormControl>
-                            {/*<InputLabel><Typography variant="subheading">ปีที่เลือก</Typography></InputLabel>*/}
+                            <InputLabel><Typography variant="subheading">ปีที่เลือก</Typography></InputLabel>
                             <Select
                                 value={yearValueViewYear}
                                 onChange={selectYear}>

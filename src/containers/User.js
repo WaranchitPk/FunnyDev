@@ -30,6 +30,8 @@ class User extends Component {
         rowsPerPage: 5,
         page: 0,
         yearAndMonth: +moment().format("YYYY"),
+        yearAndMonthUserUse: +moment().format("YYYY"),
+        monthUse: 1,
         yearAll: +moment().format("YYYY")
     };
 
@@ -37,8 +39,12 @@ class User extends Component {
         const getCurrentYear = +moment().format("YYYY");
         this.props.dispatch(findValueYear(getCurrentYear));
         this.props.dispatch(UserUseFindTrain(this.state.yearAll))
+        this.props.dispatch(UserViewFindMonthData(this.state.yearAll));
         // this.props.dispatch(FindValueMonth(this.state.year));
         // console.log('asffff'
+        // axios.get(`${api}/users/userview/findMonth/2018/1`).then(result =>{
+        //     console.log(result,'aaaa')
+        // })
 
     }
 
@@ -53,7 +59,7 @@ class User extends Component {
     };
     //tab change
     handleTabsChange = (event, value) => {
-        const {yearValueViewYear,yearUserUse,yearAll} = this.state;
+        const {yearValueViewYear, yearUserUse, yearAll} = this.state;
         this.setState({
             valueTabs: value
         });
@@ -77,13 +83,24 @@ class User extends Component {
         });
     };
     handleSelectYearAndMonth = ({target: {value}}) => {
-        console.log('selectYear ')
         this.setState({
             yearAndMonth: value
         })
         this.props.dispatch(findValueMonth(value));
     }
-
+    //select year and month user use : year
+    handleSelectYearAndMonthUserUse_Year = ({target: {value}}) => {
+        this.setState({
+            yearAndMonthUserUse: value
+        });
+        this.props.dispatch(findValueMonth(value));
+    };
+    //select year and month user use : month
+    handleSelectYearAndMonthUserUse_Month = ({target: {value}}) => {
+        this.setState({
+            monthUse: value
+        });
+    };
     //submitSelectYear To Show Month Chart
     handleSubmitYearUserView = () => {
         if (this.state.valueTabs === 0) {
@@ -100,17 +117,18 @@ class User extends Component {
         this.props.dispatch(findValueMonth(value));
     };
     handleSelectMonthUserViewDays = ({target: {value}}) => {
+        console.log('selected')
         this.setState({
             month: value
         });
     };
     //submitSelectYearAndMonth To Show Month Chart
     handleSubmitUserViewDays = () => {
-        const {yearAndMonth, month} = this.state;
+        const {yearAndMonth, month,yearAndMonthUserUse,monthUse} = this.state;
         if (this.state.valueTabs === 0) {
             this.props.dispatch(UserViewFindDayData(yearAndMonth, month));
         } else {
-            this.props.dispatch(UserUseFindDayData(yearAndMonth, month));
+            this.props.dispatch(UserUseFindDayData(yearAndMonthUserUse, monthUse));
         }
     };
 
@@ -132,7 +150,7 @@ class User extends Component {
         } else if (value === 2) {
             this.props.dispatch(findValueMonth(yearAll));
             axios.get(`${api}/users/userview/findMonth/${yearAll}/${month}`)
-            this.props.dispatch(UserViewFindDayData(yearAll, month));
+            this.props.dispatch(UserViewFindDayData(2018, 1));
             // this.props.dispatch(FindValueYear());
         }
     };
@@ -146,7 +164,6 @@ class User extends Component {
             this.props.dispatch(UserViewFindMonthData(this.state.yearAll));
             // this.props.dispatch(FindValueYear());
         } else if (value === 1) {
-            console.log('select show month')
             // this.props.dispatch(UserUseFindView(this.state.yearAll));
             // this.props.dispatch(FindValueYear());
         } else if (value === 2) {
@@ -166,7 +183,6 @@ class User extends Component {
 
     render() {
         const {UserViewdataMonth, valueYear, valueMonth, UserViewdataDay, UserUsedataMonth, UserUsedataDay, sumYearUse, UserUse_FindTrain} = this.props;
-        console.log('stater',UserUsedataMonth)
         return (
             <div>
                 <UserComponent
@@ -194,7 +210,11 @@ class User extends Component {
                     selectYearAndMonth={this.handleSelectYearAndMonth}
                     yearValueViewYear={this.state.yearValueViewYear}
                     selectYearUserUse={this.handleSelectYearUserUse}
-                    yearValueUseYear={this.state.yearUserUse}/>
+                    yearValueUseYear={this.state.yearUserUse}
+                    yearAndMonthUserUse={this.state.yearAndMonthUserUse}
+                    monthUse={this.state.monthUse}
+                    selectYearAndMonthUserUse_Year={this.handleSelectYearAndMonthUserUse_Year}
+                    selectYearAndMonthUserUse_Month={this.handleSelectYearAndMonthUserUse_Month}/>
             </div>
         );
     }

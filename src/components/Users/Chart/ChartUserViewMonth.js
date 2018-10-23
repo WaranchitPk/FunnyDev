@@ -34,15 +34,15 @@ const USerView = ({
                                                 selectYear={selectYear}
                                                 submitSelectYear={submitSelectYear}
                                                 yearValueViewYear={yearValueViewYear}/>
-                                    <Paper elevation={5}>
+                                    {/*<Paper elevation={5}>*/}
                                         <TitleChart year={yearValueViewYear}/>
                                         <ChartForMonth
                                             dataChartMonth={dataChartMonth}/>
-                                    </Paper>
+                                    {/*</Paper>*/}
                                 </Grid>
                             </Grid>
                             <Grid container justify='center' className='paperShowResult'>
-                                <Grid item xs={12} sm={8}>
+                                <Grid item xs={12} sm={5}>
                                     <CardResultYear
                                         year={year}
                                         dataMonthChart={dataChartMonth}/>

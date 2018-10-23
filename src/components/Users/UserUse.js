@@ -6,7 +6,7 @@ import {
 } from "@material-ui/core";
 import RestoreIcon from "@material-ui/icons/Restore";
 import FavoriteIcon from "@material-ui/icons/Favorite";
-import ChartViewYearAndMonth from "./Chart/ChartUserViewDays";
+import ChartViewYearAndMonth from "./Chart/ChartUserUseDays";
 import Loadable from "react-loadable";
 import ChartSumUserUse from "./Chart/Chart_train_sum/ChartSumUseUse";
 import ChartViewYear from './Chart/ChartUserUseMonth';
@@ -14,7 +14,11 @@ import ChartViewYear from './Chart/ChartUserUseMonth';
 //     loader: () => import("./Chart/ChartUserViewMonth"),
 //     loading: () => null
 // });
-
+const style = {
+    bgTabs: {
+        backgroundColor: 'aliceblue'
+    }
+}
 const UserUse = ({
                      valueBtNavigate,
                      changeBtNavigate,
@@ -35,7 +39,11 @@ const UserUse = ({
                      onChangeRowPerPageTableInResultCardUserViewDays,
                      resultSumTrainUserUse,
                      selectYearUserUse,
-                     yearValueUseYear
+                     yearValueUseYear,
+                     yearAndMonthUserUse,
+                     monthUse,
+                     selectYearAndMonth_Years,
+                     selectYearAndMonth_Month
                  }) => {
     return (
         <div>
@@ -45,7 +53,8 @@ const UserUse = ({
                     <BottomNavigation
                         value={valueBtNavigate}
                         onChange={changeBtNavigate}
-                        showLabels>
+                        showLabels
+                        style={style.bgTabs}>
                         <BottomNavigationAction label="รวม" icon={<RestoreIcon/>}/>
                         <BottomNavigationAction label="แสดงรายเดือน" icon={<RestoreIcon/>}/>
                         <BottomNavigationAction label="แสดงรายวัน" icon={<FavoriteIcon/>}/>
@@ -62,9 +71,9 @@ const UserUse = ({
                 selectYear={selectYearUserUse}
                 submitSelectYear={submitSelectYear}/>}
             {valueBtNavigate === 2 && <ChartViewYearAndMonth
-                year={year}
+                year={yearAndMonthUserUse}
                 valueYear={valueYear}
-                month={month}
+                month={monthUse}
                 valueUserViewDaysMonth={valueUserViewDaysMonth}
                 selectUserViewDayYear={selectUserViewDaysYear}
                 selectUserViewDayMonth={selectUserViewDaysMonth}
@@ -73,7 +82,9 @@ const UserUse = ({
                 rowsPerPage={rowsPerPage}
                 page={page}
                 onChangePage={onChangePageTableInResultCardUserViewDays}
-                onChangeRowPerPage={onChangeRowPerPageTableInResultCardUserViewDays}/>}
+                onChangeRowPerPage={onChangeRowPerPageTableInResultCardUserViewDays}
+                selectYearAndMonth_Years={selectYearAndMonth_Years}
+                selectYearAndMonth_Month={selectYearAndMonth_Month}/>}
         </div>
     )
 };

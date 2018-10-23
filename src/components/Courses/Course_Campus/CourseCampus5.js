@@ -43,7 +43,7 @@ const CampusChiangmai = ({data, dataTrainCM}) => (
         <Divider/>
         <Grid container justify="center" className='mainChart' id="homeCourse">
             <Grid
-                item sm={9}
+                item sm={10}
                 xs={12}>
                 <TitleCampus name={nameCampus}/>
                 <ChartCampus data={data}/>
@@ -71,8 +71,8 @@ const CampusChiangmai = ({data, dataTrainCM}) => (
                                 <YAxis/>
                                 <Tooltip/>
                                 <Legend/>
-                                <Bar dataKey='countCourse' barSize={20} fill='#80DEEA' name="จำนวนรายวิชา"/>
-                                <Line type='monotone' dataKey='countCourse' stroke='#F44336'
+                                <Bar dataKey='countCourse' barSize={20} fill='#85B8CB' name="จำนวนรายวิชา"/>
+                                <Line type='monotone' dataKey='countCourse' stroke='#E81E25'
                                       name="จำนวนการเจริญเติบโตของรายวิชา"/>
                             </ComposedChart>
                         </div>

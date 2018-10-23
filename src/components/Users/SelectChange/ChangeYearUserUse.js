@@ -9,24 +9,28 @@ import {
 } from "@material-ui/core";
 
 const styles = {
+    root: {
+        marginTop: '4%',
+        marginBottom: '1%'
+    },
     btSubmit: {
-        marginLeft: '10px'
+        marginLeft: '15px',
+        backgroundColor: '#1D6A96'
     }
 }
 const ChangeYear = ({
                         valueYear,
                         year,
                         selectYear,
-                        submitSelectYear}) => {
-    console.log('year value', year);
+                        submitSelectYear
+                    }) => {
     return (
-        <div>
+        <div style={styles.root}>
             {
                 valueYear && (
                     <div>
-
                         <FormControl>
-                            {/*<InputLabel><Typography variant="subheading">ปีที่เลือก</Typography></InputLabel>*/}
+                            <InputLabel><Typography variant="subheading">เลือกปี</Typography></InputLabel>
                             <Select
                                 value={year}
                                 onChange={selectYear}>

@@ -12,7 +12,12 @@ import CourseNanCampus from './Courses/Course_Campus/CourseCampus3';
 import CoursePitsanulokCampus from "./Courses/Course_Campus/CourseCampus4";
 import CourseChiangmaiCampus from './Courses/Course_Campus/CourseCampus5';
 import CourseLampangCampus from './Courses/Course_Campus/CourseCampus6';
-
+import '../styles/public.css'
+// const styles = {
+//     AppBar: {
+//         backgroundColor: '#1D6A96'
+//     }
+// }
 const Course = ({
                     Campus: {dataT},
                     Faculty: {dataFaculty},
@@ -23,7 +28,7 @@ const Course = ({
                 }) => (
     <div>
         <CourseBanner/>
-        <AppBar position="static">
+        <AppBar position="static" id="bgAppBar">
             <Tabs
                 value={valueTabs}
                 onChange={changeTab}>

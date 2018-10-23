@@ -19,45 +19,42 @@ const UserUseMonth = ({dataChartMonth}) => {
     if (dataChartMonth !== undefined && dataChartMonth !== null) {
         dataChartMonth.data.result.map(result => {
             if (result.month === 1) {
-                result.month = "ม.ค"
+                result.month = "มกราคม"
             }
             if (result.month === 2) {
 
-                result.month = "ก.พ"
+                result.month = "กุมภาพันธ์"
             }
             if (result.month === 3) {
-                result.month = "มี.ค"
+                result.month = "มีนาคม"
             }
             if (result.month === 4) {
-                result.month = "เม.ย"
+                result.month = "เมษายน"
             }
             if (result.month === 5) {
-                result.month = "พ.ค"
+                result.month = "พฤษภาคม"
             }
             if (result.month === 6) {
-                result.month = "มิ.ย"
-            }
-            if (result.month === 6) {
-                result.month = "มิ.ย"
+                result.month = "มิถุนายน"
             }
             if (result.month === 7) {
 
-                result.month = "ก.ค"
+                result.month = "กรกฎาคม"
             }
             if (result.month === 8) {
-                result.month = "ส.ค"
+                result.month = "สิงหาคม"
             }
             if (result.month === 9) {
-                result.month = "ก.ย"
+                result.month = "กันยายน"
             }
             if (result.month === 10) {
-                result.month = "ต.ค"
+                result.month = "ตุลาคม"
             }
             if (result.month === 11) {
-                result.month = "พ.ย"
+                result.month = "พฤศจิกายน"
             }
             if (result.month === 12) {
-                result.month = "ธ.ค"
+                result.month = "ธันวาคม"
             }
             showData = dataChartMonth.data.result
         })
@@ -81,7 +78,7 @@ const UserUseMonth = ({dataChartMonth}) => {
                     <YAxis/>
                     <Tooltip/>
                     <Legend/>
-                    <Bar dataKey="countMonth" fill='#82ca9d' name="จำนวน"/>
+                    <Bar dataKey="countMonth" fill='#85B8CB' name="จำนวน"/>
                 </BarChart>
             </ResponsiveContainer>
         </div>

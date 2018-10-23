@@ -12,10 +12,10 @@ const Orthers = () => {
       <Card style={styles.Card}>
         <CardContent>
           <Typography align='left' variant='display1'>
-            Orther Analytic
+            วิเคราะห์อื่นๆ
           </Typography>
           <Typography align='left' variant='subheading'>
-            E-learning reporting and tracking system for Rajamangala University of Technology Lanna
+            E-learning reporting and tracking system for Rajamangala University of Technology.
           </Typography>
         </CardContent>
       </Card>
