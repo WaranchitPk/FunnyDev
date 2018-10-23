@@ -122,7 +122,6 @@ class Home extends Component {
             });
         }
         let resultTrainCourseAndUserUse = []
-        console.log('find',UserUse_FindTrain)
         // if (TrainAllCampus !== null && TrainAllCampus != undefined) {
         //     TrainAllCampus.data.result.slice(1).map((value, index) => {
         //         // console.log('aaa',UserUse_FindTrain.data.result[index].sumUser)

@@ -25,6 +25,9 @@ import ResultText from './ShowResultText/resultText';
 const styles = {
     root: {
         marginTop: "2%"
+    },
+    LoadingData: {
+        marginTop: '2%'
     }
 };
 const nameCampus = "ลำปาง";
@@ -75,7 +78,8 @@ const CampusLampang = ({data, dataTrainLP}) => (
                             </ComposedChart>
                         </div>
                     ) : (
-                        <CircularProgress size={50}/>
+                        <Typography align={"center"} style={styles.LoadingData}><CircularProgress
+                            size={100}/></Typography>
                     )
                 }
             </Grid>

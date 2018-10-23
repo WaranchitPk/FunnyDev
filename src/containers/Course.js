@@ -72,7 +72,6 @@ class Course extends Component {
   }
 
   render() {
-    console.log('result',this.props.TrainAllCampus);
     return (
       <div>
         <CourseComponent

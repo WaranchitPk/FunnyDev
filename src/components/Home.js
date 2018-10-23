@@ -34,8 +34,10 @@ const styles = {
     ChartCourseAnalytic: {
         marginTop: "2%",
         marginBottom: "2%"
+    },
+    LoadingTrain: {
+        marginTop: '2%'
     }
-
 };
 const Home = ({
                   data: {data1, data2},
@@ -79,7 +81,9 @@ const Home = ({
                 <Grid item xs={10} sm={7}>
                     {
                         Object.keys(CourseAnalyticData).length === 0 ? (
-                            <CircularProgress size={50}/>
+                            <Typography align="center" style={styles.LoadingTrain}>
+                                <CircularProgress size={100} />
+                            </Typography>
                         ) : (
                             <Paper>
                                 <Typography variant='title' align="center">
@@ -104,7 +108,9 @@ const Home = ({
             <Divider/>
             {
                 isDataAvailable === false ?
-                    <h1>Load Data</h1>
+                    <Typography align="center" style={styles.LoadingTrain}>
+                        <CircularProgress size={100} />
+                    </Typography>
                     :
                     <Grid container justify="center" style={styles.ChartCourseAnalytic}>
                         <Grid item xs={10} sm={7}>

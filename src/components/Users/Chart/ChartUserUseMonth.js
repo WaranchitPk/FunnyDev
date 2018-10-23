@@ -7,20 +7,18 @@ import {
 import '../../../styles/user.css';
 import Loadable from "react-loadable";
 import TitleChart from './Title/UserViewYear';
-import ChartForMonth from './Chart_User/UserViewMonths';
+import ChartForMonth from './Chart_User/ChartUserUseMonth';
 import CardResultYear from '../CardResult/FindYear';
-import SelectYear from '../SelectChange/ChangeYear';
+import SelectYear from '../SelectChange/ChangeYearUserUse';
 
 
-const USerView = ({
-                      year,
-                      dataChartMonth,
-                      valueYear,
-                      selectYear,
-                      submitSelectYear,
-                      yearValueViewYear
-                  }) => {
-    console.log('data month',year)
+const UserUse = ({
+                     year,
+                     dataChartMonth,
+                     valueYear,
+                     selectYear,
+                     submitSelectYear,
+                 }) => {
     return (
         <div>
             {
@@ -32,10 +30,9 @@ const USerView = ({
                                     <SelectYear valueYear={valueYear}
                                                 year={year}
                                                 selectYear={selectYear}
-                                                submitSelectYear={submitSelectYear}
-                                                yearValueViewYear={yearValueViewYear}/>
+                                                submitSelectYear={submitSelectYear}/>
                                     <Paper elevation={5}>
-                                        <TitleChart year={yearValueViewYear}/>
+                                        <TitleChart year={year}/>
                                         <ChartForMonth
                                             dataChartMonth={dataChartMonth}/>
                                     </Paper>
@@ -55,4 +52,4 @@ const USerView = ({
     )
 };
 
-export default USerView;
+export default UserUse;

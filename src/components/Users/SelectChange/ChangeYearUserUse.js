@@ -13,9 +13,12 @@ const styles = {
         marginLeft: '10px'
     }
 }
-const ChangeYear = ({valueYear, year, selectYear, submitSelectYear,yearValueViewYear}) => {
-    console.log('year', year);
-    console.log('value ear', valueYear);
+const ChangeYear = ({
+                        valueYear,
+                        year,
+                        selectYear,
+                        submitSelectYear}) => {
+    console.log('year value', year);
     return (
         <div>
             {
@@ -25,7 +28,7 @@ const ChangeYear = ({valueYear, year, selectYear, submitSelectYear,yearValueView
                         <FormControl>
                             {/*<InputLabel><Typography variant="subheading">ปีที่เลือก</Typography></InputLabel>*/}
                             <Select
-                                value={yearValueViewYear}
+                                value={year}
                                 onChange={selectYear}>
                                 {
                                     valueYear.data.result.map(data => (

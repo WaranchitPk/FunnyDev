@@ -24,6 +24,7 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 //   loader: () => import("./Users/Chart/ChartUserViewDays"),
 //   loading: () => null
 // });
+
 const User = ({
                   valueBtNavigateUserView,
                   valueBtNavigateUserUse,
@@ -55,8 +56,15 @@ const User = ({
                   dataMonthChartUserUse,
                   dataDayChartUserUse,
                   resultSumUserView,
-                  resultSumTrainUserUse
+                  resultSumTrainUserUse,
+                  selectYearAndMonth,
+                  yearAndMonth,
+                  yearValueViewYear,
+                  selectYearUserUse,
+                  yearValueUseYear
+
               }) => {
+    console.log(yearValueUseYear, 'year')
     return (
         <div>
             <UserBanner/>
@@ -74,9 +82,12 @@ const User = ({
                     valueBtNavigate={valueBtNavigateUserView}
                     changeBtNavigate={changeBtNavigateUserView}
                     year={year}
+                    yearValueViewYear={yearValueViewYear}
                     dataMonthChart={dataMonthChart}
                     valueYear={valueYear}
                     selectYear={selectYear}
+                    selectYearAndMonth={selectYearAndMonth}
+                    valueYearAndMonth={yearAndMonth}
                     submitSelectYear={submitSelectYear}
                     month={month}
                     valueUserViewDaysMonth={valueUserViewDaysMonth}
@@ -110,7 +121,9 @@ const User = ({
                     page={page}
                     onChangePageTableInResultCardUserViewDays={onChangePageTableInResultCardUserViewDays}
                     onChangeRowPerPageTableInResultCardUserViewDays={onChangeRowPerPageTableInResultCardUserViewDays}
-                    resultSumTrainUserUse={resultSumTrainUserUse}/>)
+                    resultSumTrainUserUse={resultSumTrainUserUse}
+                    selectYearUserUse={selectYearUserUse}
+                    yearValueUseYear={yearValueUseYear}/>)
             }
 
         </div>

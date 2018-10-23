@@ -12,12 +12,11 @@ import {
 import Loadable from "react-hot-loader";
 
 
-const UserViewMonths = ({dataChartMonth}) => {
+const UserUseMonth = ({dataChartMonth}) => {
     let showData = "";
     // let dataKeyXAxis = "";
     // let dataBar = "";
     if (dataChartMonth !== undefined && dataChartMonth !== null) {
-        console.log("UserViewdataMonth", dataChartMonth.data.result);
         dataChartMonth.data.result.map(result => {
             if (result.month === 1) {
                 result.month = "ม.ค"
@@ -73,20 +72,21 @@ const UserViewMonths = ({dataChartMonth}) => {
     //   dataBar = "countDay";
     //   //  {day: 1, countDay: 507}
     // }
-    console.log('dataChart', dataChartMonth)
     return (
-        <ResponsiveContainer width='100%' aspect={2}>
-            <BarChart data={showData}>
-                <CartesianGrid strokeDasharray='3 3'/>
-                <XAxis dataKey="month"/>
-                <YAxis/>
-                <Tooltip/>
-                <Legend/>
-                <Bar dataKey="countMonth" fill='#82ca9d' name="จำนวน"/>
-            </BarChart>
-        </ResponsiveContainer>
+        <div>
+            <ResponsiveContainer width='100%' aspect={2}>
+                <BarChart data={showData}>
+                    <CartesianGrid strokeDasharray='3 3'/>
+                    <XAxis dataKey="month"/>
+                    <YAxis/>
+                    <Tooltip/>
+                    <Legend/>
+                    <Bar dataKey="countMonth" fill='#82ca9d' name="จำนวน"/>
+                </BarChart>
+            </ResponsiveContainer>
+        </div>
 
     );
 };
 
-export default UserViewMonths;
+export default UserUseMonth;

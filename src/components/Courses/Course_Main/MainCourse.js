@@ -56,6 +56,9 @@ const ShowResultSubject = ({value}) => (
 const styles = {
     Paper: {
         marginTop: '4%'
+    },
+    LoadingData: {
+        marginTop: '2%'
     }
 }
 const iconCampus = [iconChiangrai, iconTak, iconNan, iconPitsanulok, iconChiangmai, iconLampang];
@@ -112,7 +115,8 @@ const MainCourse = ({dataT, dataTrainAll}) => (
                             </ResponsiveContainer>
                         </div>
                     ) : (
-                        <CircularProgress size={50}/>
+                        <Typography align={"center"} style={styles.LoadingData}><CircularProgress
+                            size={100}/></Typography>
                     )
                 }
             </Grid>

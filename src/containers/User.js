@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import {UserComponent} from "../components";
@@ -22,13 +21,15 @@ class User extends Component {
     state = {
         valueBtNavigateUserView: "",
         valueBtNavigateUserUse: "",
-        year: +moment().format("YYYY"),
+        yearValueViewYear: +moment().format("YYYY"),
+        yearUserUse: +moment().format("YYYY"),
         quarter: 1,
         showMonth: 3,
         month: 1,
         valueTabs: 0,
         rowsPerPage: 5,
         page: 0,
+        yearAndMonth: +moment().format("YYYY"),
         yearAll: +moment().format("YYYY")
     };
 
@@ -44,6 +45,7 @@ class User extends Component {
     ChangeValueFormYear = () => {
         this.props.dispatch(y2018Action(this.state.year));
     };
+
     handleSelect = (event) => {
         this.setState({
             [event.target.name]: event.target.value
@@ -51,34 +53,49 @@ class User extends Component {
     };
     //tab change
     handleTabsChange = (event, value) => {
-        const {year} = this.state;
+        const {yearValueViewYear,yearUserUse,yearAll} = this.state;
         this.setState({
             valueTabs: value
         });
         if (value === 0) {
-            this.props.dispatch(UserViewFindMonthData(year));
+            this.props.dispatch(UserViewFindMonthData(yearValueViewYear));
         } else {
-            this.props.dispatch(UserUseFindMonthData(year));
+            this.props.dispatch(UserUseFindMonthData(yearAll));
         }
     };
     //set value year on select
     handleSelectYear = ({target: {value}}) => {
+        console.log('select')
         this.setState({
-            year: value
+            yearValueViewYear: value
         });
     };
+    handleSelectYearUserUse = ({target: {value}}) => {
+        console.log('select USer Use Month')
+        this.setState({
+            yearUserUse: value
+        });
+    };
+    handleSelectYearAndMonth = ({target: {value}}) => {
+        console.log('selectYear ')
+        this.setState({
+            yearAndMonth: value
+        })
+        this.props.dispatch(findValueMonth(value));
+    }
+
     //submitSelectYear To Show Month Chart
     handleSubmitYearUserView = () => {
         if (this.state.valueTabs === 0) {
-            this.props.dispatch(UserViewFindMonthData(this.state.year));
+            this.props.dispatch(UserViewFindMonthData(this.state.yearValueViewYear));
         } else {
-            this.props.dispatch(UserUseFindMonthData(this.state.year));
+            this.props.dispatch(UserUseFindMonthData(this.state.yearUserUse));
         }
     };
     //set value month && year
     handleSelectYearUserViewDays = ({target: {value}}) => {
         this.setState({
-            year: value
+            yearAndMonth: value
         });
         this.props.dispatch(findValueMonth(value));
     };
@@ -89,11 +106,11 @@ class User extends Component {
     };
     //submitSelectYearAndMonth To Show Month Chart
     handleSubmitUserViewDays = () => {
-        const {year, month} = this.state;
+        const {yearAndMonth, month} = this.state;
         if (this.state.valueTabs === 0) {
-            this.props.dispatch(UserViewFindDayData(year, month));
+            this.props.dispatch(UserViewFindDayData(yearAndMonth, month));
         } else {
-            this.props.dispatch(UserUseFindDayData(year, month));
+            this.props.dispatch(UserUseFindDayData(yearAndMonth, month));
         }
     };
 
@@ -109,12 +126,13 @@ class User extends Component {
             const getYearNow = +moment().format("YYYY");
             this.props.dispatch(UserViewFindSumYear(getYearNow));
         } else if (value === 1) {
-            // this.props.dispatch(UserViewFindMonthData(year));
+            // this.props.dispatch(UserViewFindMonthData(this.state.yearAll));
+            // this.props.dispatch(UserViewFindMonthData(this.state.yearAll));
             // this.props.dispatch(FindValueYear());
         } else if (value === 2) {
-            this.props.dispatch(findValueMonth(year));
-            axios.get(`${api}/users/userview/findMonth/${year}/${month}`)
-            this.props.dispatch(UserViewFindDayData(year, month));
+            this.props.dispatch(findValueMonth(yearAll));
+            axios.get(`${api}/users/userview/findMonth/${yearAll}/${month}`)
+            this.props.dispatch(UserViewFindDayData(yearAll, month));
             // this.props.dispatch(FindValueYear());
         }
     };
@@ -125,14 +143,15 @@ class User extends Component {
             valueBtNavigateUserView: ""
         });
         if (value === 0) {
-            // this.props.dispatch(UserViewFindMonthData(year));
+            this.props.dispatch(UserViewFindMonthData(this.state.yearAll));
             // this.props.dispatch(FindValueYear());
         } else if (value === 1) {
-            // this.props.dispatch(UserViewFindMonthData(year));
+            console.log('select show month')
+            // this.props.dispatch(UserUseFindView(this.state.yearAll));
             // this.props.dispatch(FindValueYear());
         } else if (value === 2) {
-            this.props.dispatch(findValueMonth(year));
-            this.props.dispatch(UserUseFindDayData(year, month));
+            this.props.dispatch(findValueMonth(this.state.yearAll));
+            this.props.dispatch(UserUseFindDayData(this.state.yearAll, this.state.month));
             // this.props.dispatch(FindValueYear());
         }
     };
@@ -147,11 +166,7 @@ class User extends Component {
 
     render() {
         const {UserViewdataMonth, valueYear, valueMonth, UserViewdataDay, UserUsedataMonth, UserUsedataDay, sumYearUse, UserUse_FindTrain} = this.props;
-        let resultDataIsTrainUserUse = [];
-        // if (UserUse_FindTrain !== null && UserUse_FindTrain !== undefined) {
-        //     resultDataIsTrainUserUse = UserUse_FindTrain.data.result
-        //     console.log('result new ', resultDataIsTrainUserUse)
-        // }
+        console.log('stater',UserUsedataMonth)
         return (
             <div>
                 <UserComponent
@@ -175,7 +190,11 @@ class User extends Component {
                     dataMonthChartUserUse={UserUsedataMonth}
                     dataDayChartUserUse={UserUsedataDay}
                     resultSumUserView={sumYearUse}
-                    resultSumTrainUserUse={UserUse_FindTrain}/>
+                    resultSumTrainUserUse={UserUse_FindTrain}
+                    selectYearAndMonth={this.handleSelectYearAndMonth}
+                    yearValueViewYear={this.state.yearValueViewYear}
+                    selectYearUserUse={this.handleSelectYearUserUse}
+                    yearValueUseYear={this.state.yearUserUse}/>
             </div>
         );
     }

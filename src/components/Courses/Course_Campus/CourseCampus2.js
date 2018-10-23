@@ -21,6 +21,9 @@ import {
 const styles = {
     root: {
         marginTop: "2%"
+    },
+    LoadingData: {
+        marginTop: '2%'
     }
 };
 import TitleCampus from './Title_CourseCampus/TitleCourse';
@@ -78,7 +81,8 @@ const CampusTak = ({data, dataTrainTK}) => (
                             </ComposedChart>
                         </div>
                     ) : (
-                        <CircularProgress size={50}/>
+                        <Typography align={"center"} style={styles.LoadingData}><CircularProgress
+                            size={100}/></Typography>
                     )
                 }
             </Grid>
