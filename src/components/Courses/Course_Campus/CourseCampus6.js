@@ -56,27 +56,29 @@ const CampusLampang = ({data, dataTrainLP}) => (
         </ListItem>
         <Divider/>
         <Grid container justify="center" id="homeCourse">
-            {
-                dataTrainLP !== null && dataTrainLP !== undefined ? (
-                    <div style={styles.root}>
-                        <Typography align="center"
-                                    variant="title">อัตราการเติบโตของจำนวนรายวิชาในเขตพื้นที่ลำปาง</Typography>
-                        <ComposedChart width={800} height={600} data={dataTrainLP.data.result}
-                                       margin={{top: 20, right: 20, bottom: 20, left: 20}}>
-                            <CartesianGrid stroke='#f5f5f5'/>
-                            <XAxis dataKey="date"/>
-                            <YAxis/>
-                            <Tooltip/>
-                            <Legend/>
-                            <Bar dataKey='countCourse' barSize={20} fill='#80DEEA' name="จำนวนรายวิชา"/>
-                            <Line type='monotone' dataKey='countCourse' stroke='#F44336'
-                                  name="จำนวนการเจริญเติบโตของรายวิชา"/>
-                        </ComposedChart>
-                    </div>
-                ) : (
-                    <CircularProgress size={50}/>
-                )
-            }
+            <Grid item xs={12} sm={6}>
+                {
+                    dataTrainLP !== null && dataTrainLP !== undefined ? (
+                        <div style={styles.root}>
+                            <Typography align="center"
+                                        variant="title">อัตราการเติบโตของจำนวนรายวิชาในเขตพื้นที่ลำปาง</Typography>
+                            <ComposedChart width={800} height={600} data={dataTrainLP.data.result}
+                                           margin={{top: 20, right: 20, bottom: 20, left: 20}}>
+                                <CartesianGrid stroke='#f5f5f5'/>
+                                <XAxis dataKey="date"/>
+                                <YAxis/>
+                                <Tooltip/>
+                                <Legend/>
+                                <Bar dataKey='countCourse' barSize={20} fill='#80DEEA' name="จำนวนรายวิชา"/>
+                                <Line type='monotone' dataKey='countCourse' stroke='#F44336'
+                                      name="จำนวนการเจริญเติบโตของรายวิชา"/>
+                            </ComposedChart>
+                        </div>
+                    ) : (
+                        <CircularProgress size={50}/>
+                    )
+                }
+            </Grid>
         </Grid>
         <Divider/>
         <ListItem>

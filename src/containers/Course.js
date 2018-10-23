@@ -44,10 +44,8 @@ class Course extends Component {
     const { dispatch } = this.props;
     this.setState({ valueTabs: value });
     if (value === 1) {
-      console.log('asfsa')
       dispatch(findEachGraph(value, this.state.year));
     } else if (value === 2) {
-        console.log('asfsa2')
       dispatch(findEachGraph(value, this.state.year));
     } else if (value === 3) {
       dispatch(findEachGraph(value, this.state.year));
@@ -74,7 +72,7 @@ class Course extends Component {
   }
 
   render() {
-    // console.log(this.props.TrainAllCampus);
+    console.log('result',this.props.TrainAllCampus);
     return (
       <div>
         <CourseComponent

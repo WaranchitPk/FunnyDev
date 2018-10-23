@@ -12,7 +12,7 @@ import {
     CartesianGrid,
     ComposedChart,
     Legend,
-    Line,
+    Line, ResponsiveContainer,
     Tooltip,
     XAxis,
     YAxis
@@ -20,6 +20,7 @@ import {
 import TitleCampus from './Title_CourseCampus/TitleCourse';
 import ChartCampus from './Chart_CourseCampus/ChartCourseCampus';
 import ResultText from './ShowResultText/resultText';
+
 const styles = {
     root: {
         marginTop: '2%'
@@ -53,8 +54,8 @@ const CampusChiangrai = ({data, dataTrainCR}) => (
                 item sm={9}
                 xs={12}>
                 {/*<Paper elevation={5}>*/}
-                    <TitleCampus name={nameCampus}/>
-                    <ChartCampus data={data}/>
+                <TitleCampus name={nameCampus}/>
+                <ChartCampus data={data}/>
                 {/*</Paper>*/}
             </Grid>
         </Grid>
@@ -67,28 +68,34 @@ const CampusChiangrai = ({data, dataTrainCR}) => (
             </ListItemText>
         </ListItem>
         <Divider/>
+
         <Grid container justify="center" id="homeCourse">
-            {
-                dataTrainCR !== null && dataTrainCR !== undefined ? (
-                    <div style={styles.root}>
-                        <Typography align="center"
-                                    variant="title">อัตราการเติบโตของจำนวนรายวิชาในเขตพื้นที่เชียงราย</Typography>
-                        <ComposedChart width={800} height={600} data={dataTrainCR.data.result}
-                                       margin={{top: 20, right: 20, bottom: 20, left: 20}}>
-                            <CartesianGrid stroke='#f5f5f5'/>
-                            <XAxis dataKey="date"/>
-                            <YAxis/>
-                            <Tooltip/>
-                            <Legend/>
-                            <Bar dataKey='countCourse' barSize={20} fill='#80DEEA' name="จำนวนรายวิชา"/>
-                            <Line type='monotone' dataKey='countCourse' stroke='#F44336'
-                                  name="จำนวนการเจริญเติบโตของรายวิชา"/>
-                        </ComposedChart>
-                    </div>
-                ) : (
-                    <CircularProgress size={50}/>
-                )
-            }
+            <Grid item xs={12} sm={6}>
+                {
+                    dataTrainCR !== null && dataTrainCR !== undefined ? (
+                        <div style={styles.root}>
+                            <Typography align="center"
+                                        variant="title">อัตราการเติบโตของจำนวนรายวิชาในเขตพื้นที่เชียงราย</Typography>
+                            <ResponsiveContainer
+                                width='100%'
+                                aspect={2}>
+                                <ComposedChart data={dataTrainCR.data.result}>
+                                    <CartesianGrid stroke='#f5f5f5'/>
+                                    <XAxis dataKey="yearShow"/>
+                                    <YAxis/>
+                                    <Tooltip/>
+                                    <Legend/>
+                                    <Bar dataKey='countCourse' barSize={20} fill='#80DEEA' name="จำนวนรายวิชา"/>
+                                    <Line type='monotone' dataKey='countCourse' stroke='#F44336'
+                                          name="จำนวนการเจริญเติบโตของรายวิชา"/>
+                                </ComposedChart>
+                            </ResponsiveContainer>
+                        </div>
+                    ) : (
+                        <CircularProgress size={50}/>
+                    )
+                }
+            </Grid>
         </Grid>
         <Divider/>
         <ListItem>

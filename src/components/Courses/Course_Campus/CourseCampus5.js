@@ -56,26 +56,28 @@ const CampusChiangmai = ({data, dataTrainCM}) => (
         </ListItem>
         <Divider/>
         <Grid container justify="center" id="homeCourse">
-            {
-                dataTrainCM !== null && dataTrainCM !== undefined ? (
-                    <div style={styles.root}>
-                        <Typography align="center"
-                                    variant="title">อัตราการเติบโตของจำนวนรายวิชาในเขตพื้นที่เชียงใหม่</Typography>
-                        <ComposedChart width={800} height={600} data={dataTrainCM.data.result}>
-                            <CartesianGrid stroke='#f5f5f5'/>
-                            <XAxis dataKey="date"/>
-                            <YAxis/>
-                            <Tooltip/>
-                            <Legend/>
-                            <Bar dataKey='countCourse' barSize={20} fill='#80DEEA' name="จำนวนรายวิชา"/>
-                            <Line type='monotone' dataKey='countCourse' stroke='#F44336'
-                                  name="จำนวนการเจริญเติบโตของรายวิชา"/>
-                        </ComposedChart>
-                    </div>
-                ) : (
-                    <CircularProgress size={50}/>
-                )
-            }
+            <Grid item xs={12} sm={6}>
+                {
+                    dataTrainCM !== null && dataTrainCM !== undefined ? (
+                        <div style={styles.root}>
+                            <Typography align="center"
+                                        variant="title">อัตราการเติบโตของจำนวนรายวิชาในเขตพื้นที่เชียงใหม่</Typography>
+                            <ComposedChart width={800} height={600} data={dataTrainCM.data.result}>
+                                <CartesianGrid stroke='#f5f5f5'/>
+                                <XAxis dataKey="date"/>
+                                <YAxis/>
+                                <Tooltip/>
+                                <Legend/>
+                                <Bar dataKey='countCourse' barSize={20} fill='#80DEEA' name="จำนวนรายวิชา"/>
+                                <Line type='monotone' dataKey='countCourse' stroke='#F44336'
+                                      name="จำนวนการเจริญเติบโตของรายวิชา"/>
+                            </ComposedChart>
+                        </div>
+                    ) : (
+                        <CircularProgress size={50}/>
+                    )
+                }
+            </Grid>
         </Grid>
         <Divider/>
         <ListItem>

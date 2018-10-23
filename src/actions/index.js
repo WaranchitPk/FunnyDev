@@ -17,5 +17,6 @@ export {
   UserViewFindDayData,
   UserUseFindMonthData,
   UserUseFindDayData,
-  UserViewFindSumYear
+  UserViewFindSumYear,
+    UserUseFindTrain
 } from './Users';

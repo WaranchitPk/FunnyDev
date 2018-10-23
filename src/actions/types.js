@@ -18,3 +18,5 @@ export const UserAnalyticUserViewSumYear = "LOAD_YEAR_SUM_USER_VIEW";
 
 export const CourseAllCampusGraph = "LOAD_DATA_GRAPH";
 export const CourseEachCampusGraph = "LOAD_DATA_GRAPH_CAMPUS";
+
+export const UserAnalyticUserUSeFindTrain = "LOAD_DATA_USER_USE_Train";

@@ -11,7 +11,8 @@ import {
     UserViewFindDayData,
     UserUseFindMonthData,
     UserUseFindDayData,
-    UserViewFindSumYear
+    UserViewFindSumYear,
+    UserUseFindTrain
 } from "../actions";
 import axios from "axios";
 import {api} from "../config";
@@ -34,7 +35,9 @@ class User extends Component {
     componentDidMount() {
         const getCurrentYear = +moment().format("YYYY");
         this.props.dispatch(findValueYear(getCurrentYear));
+        this.props.dispatch(UserUseFindTrain(this.state.yearAll))
         // this.props.dispatch(FindValueMonth(this.state.year));
+        // console.log('asffff'
 
     }
 
@@ -96,7 +99,7 @@ class User extends Component {
 
     //change Bt Navigate User View
     handleChangeBtNavigateUserView = (event, value) => {
-        const {year, month,yearAll} = this.state;
+        const {year, month, yearAll} = this.state;
 
         this.setState({
             valueBtNavigateUserView: value,
@@ -143,9 +146,12 @@ class User extends Component {
     };
 
     render() {
-        const {UserViewdataMonth, valueYear, valueMonth, UserViewdataDay, UserUsedataMonth, UserUsedataDay, sumYearUse} = this.props;
-        console.log('result', sumYearUse)
-
+        const {UserViewdataMonth, valueYear, valueMonth, UserViewdataDay, UserUsedataMonth, UserUsedataDay, sumYearUse, UserUse_FindTrain} = this.props;
+        let resultDataIsTrainUserUse = [];
+        // if (UserUse_FindTrain !== null && UserUse_FindTrain !== undefined) {
+        //     resultDataIsTrainUserUse = UserUse_FindTrain.data.result
+        //     console.log('result new ', resultDataIsTrainUserUse)
+        // }
         return (
             <div>
                 <UserComponent
@@ -168,7 +174,8 @@ class User extends Component {
                     onChangeRowPerPageTableInResultCardUserViewDays={this.handleChangeRowsPerPageUserView}
                     dataMonthChartUserUse={UserUsedataMonth}
                     dataDayChartUserUse={UserUsedataDay}
-                    resultSumUserView={sumYearUse}/>
+                    resultSumUserView={sumYearUse}
+                    resultSumTrainUserUse={UserUse_FindTrain}/>
             </div>
         );
     }
@@ -183,7 +190,8 @@ const mapStateToProps = state => (
         UserViewdataMonth: state.UserViewFindChooseYear.data,
         UserUsedataMonth: state.UserUseFindChooseYear.data,
         UserUsedataDay: state.UserUseFindChooseMonth.data,
-        sumYearUse: state.UserViewFindSumYear.data
+        sumYearUse: state.UserViewFindSumYear.data,
+        UserUse_FindTrain: state.UserUseFindTrain.data
     }
 );
 export default connect(mapStateToProps)(User);

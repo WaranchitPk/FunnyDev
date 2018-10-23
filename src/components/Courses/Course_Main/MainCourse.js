@@ -72,7 +72,7 @@ const MainCourse = ({dataT, dataTrainAll}) => (
         </List>
         <Divider/>
         <Grid container className='mainChart' justify="center" id="homeCourse">
-            <Grid item sm={7} xs={12}>
+            <Grid item sm={9} xs={12}>
                 <TitleCampus/>
                 <ChartCampus
                     dataT={dataT}/>

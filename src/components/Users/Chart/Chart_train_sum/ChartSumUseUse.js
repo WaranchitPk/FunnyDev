@@ -62,24 +62,24 @@ const styles = {
     marginTop: "5%"
   }
 };
-const ShowTrainUser = () => (
+const ShowTrainUser = ({dataTrainResult}) => (
   <Grid container justify="center">
     {
-      arrShowDataTest !== null && arrShowDataTest !== undefined ? (
-        <Paper elevation={5} style={styles.root}>
+        dataTrainResult !== null && dataTrainResult !== undefined ? (
+        <div style={styles.root}>
           <Typography align="center" variant="title">อัตราการเติบโตของจำนวนผู้เข้าใช้</Typography>
 
-          <ComposedChart width={800} height={600} data={arrShowDataTest}
+          <ComposedChart width={800} height={600} data={dataTrainResult.data.result}
                          margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
             <CartesianGrid stroke='#f5f5f5'/>
-            <XAxis dataKey="Year"/>
+            <XAxis dataKey="year"/>
             <YAxis/>
             <Tooltip/>
             <Legend/>
-            <Bar dataKey='CountYear' barSize={20} fill='#80DEEA' name="จำนวนผู้เข้าใช้ระบบ"/>
-            <Line type='monotone' dataKey='CountYear' stroke='#F44336' name="อัตราการเติบโตของผู้เข้าใช้ระบบ"/>
+            <Bar dataKey='sumUser' barSize={20} fill='#80DEEA' name="จำนวนผู้เข้าใช้ระบบ"/>
+            <Line type='monotone' dataKey='sumUser' stroke='#F44336' name="อัตราการเติบโตของผู้เข้าใช้ระบบ"/>
           </ComposedChart>
-        </Paper>
+        </div>
       ) : (
         <CircularProgress size={25}/>
       )
